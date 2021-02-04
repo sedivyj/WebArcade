@@ -7,6 +7,7 @@ on:
   push:
     branches:
       - master
+  workflow_dispatch:
 
 jobs:
   build-and-deploy:
@@ -25,12 +26,11 @@ jobs:
         npm install
         npm run build --if-present
         npm run test --if-present
-        npm start
 
     - name: 'Deploy to Azure Web App'
       uses: azure/webapps-deploy@v2
       with:
         app-name: 'cs458capstone'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_8ff6466a4f9b40b49dbe55399aedf6b5 }}
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_14b03d4d81b848cab5f3e815d6ed7398 }}
         package: .
