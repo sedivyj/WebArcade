@@ -1,25 +1,26 @@
 {
-  "name": "WebArcade.github.io",
+  "name": "WebArcade",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.7"
+  },
+  "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\"",
+    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vailtra/WebArcade.github.io.git"
+    "url": "git+https://github.com/sedivyj/WebArcade.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/vailtra/WebArcade.github.io/issues"
+    "url": "https://github.com/sedivyj/WebArcade/issues"
   },
-  "homepage": "https://github.com/vailtra/WebArcade.github.io#readme",
-  "dependencies": {
-    "express": "^4.17.1",
-    "nodemon": "^2.0.7"
-  }
+  "homepage": "https://github.com/sedivyj/WebArcade#readme"
 }
