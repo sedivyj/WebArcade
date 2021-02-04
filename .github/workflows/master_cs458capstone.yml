@@ -25,6 +25,7 @@ jobs:
         npm install
         npm run build --if-present
         npm run test --if-present
+        npm start
 
     - name: 'Deploy to Azure Web App'
       uses: azure/webapps-deploy@v2
