@@ -5,3 +5,15 @@ body{
 #bannerHome{
     margin-top: 30px;
 }
+#about-p {
+    text-align:center;
+    margin-left: 33%;
+    margin-right: 33%;
+    padding-top: 50px;
+    font-size: large;
+    color:white;
+}
+h1{
+    text-align: center;
+    color:white
+}
