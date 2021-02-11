@@ -4,5 +4,6 @@
         ".vscode{,/**}"
     ],
     "appService.defaultWebAppToDeploy": "/subscriptions/dd9a36f4-d74f-41ad-9043-70c88c7b5424/resourceGroups/Capstone_2/providers/Microsoft.Web/sites/cs458capstone",
-    "appService.deploySubpath": "."
+    "appService.deploySubpath": ".",
+    "cmake.configureOnOpen": false
 }
