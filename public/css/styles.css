@@ -1,9 +1,13 @@
 body{
     background-color: black;
+    overflow-y: scroll;
+}
+body::-webkit-scrollbar {
+    display: none;
 }
 
 #bannerHome{
-    margin-top: 30px;
+    margin-top: 51px;
 }
 #about-p {
     text-align:center;
@@ -16,4 +20,15 @@ body{
 h1{
     text-align: center;
     color:white
+}
+
+#gameDiv{
+    text-align: center;
+    margin-top: 51px;
+
+}
+#bContainer
+{
+    height: 207px;
+    width: 100%;
 }
