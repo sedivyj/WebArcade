@@ -19,14 +19,13 @@ app.use('/testdb', (req, res)=> {
     db.query('SELECT * FROM test_table;', (error, results, fields) => {
         // Check for errors
         if(error) {
-            res.send("error");
+            res.send(`ERROR:\n${error}`);
         } else {
             res.json(results);
         }
     });
 })
 
-//TODO: Handle error
 // Initializes DB connection and Starts App
 initDb((err) => {
     app.listen(port, (err) => {
