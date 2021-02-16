@@ -17,7 +17,7 @@ const dev = {
         database: process.env.DEV_DB_DEFAULT, 
         port: parseInt(process.env.DEV_DB_PORT), 
         ssl: { 
-            ca: fs.readFileSync('BaltimoreCyberTrustRoot.crt.pem')
+            ca: fs.readFileSync(__dirname + '/ssl/BaltimoreCyberTrustRoot.crt.pem')
         }
     }
 };
@@ -35,7 +35,7 @@ const prod = {
         database: process.env.PROD_DB_DEFAULT,
         port: parseInt(process.env.PROD_DB_PORT),
         ssl: { 
-            ca: fs.readFileSync('BaltimoreCyberTrustRoot.crt.pem')
+            ca: fs.readFileSync(__dirname + '/ssl/BaltimoreCyberTrustRoot.crt.pem')
         }
     }
 }
