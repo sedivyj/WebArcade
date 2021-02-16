@@ -1,0 +1,18 @@
+
+  .counter
+  {
+      text-align: center;
+  }
+  
+  .counter-count
+  {
+      font-size: 50px;
+      font-weight: bold;
+      position: relative;
+      color: #000000;
+      text-align: center;
+      display: inline-block;
+  }
+  h3{
+      color: blue;
+  }
