@@ -1,18 +1,51 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 
-  .counter
-  {
-      text-align: center;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+scoreBody {
+
+  color: #fff;
+  /* Push to bottom */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 100vh;
+}
+
+
+
+
+.counters {
+
+  color: rgb(10, 233, 77);
+  padding: 40px 20px;
+  border-top: 3px lightskyblue solid;
+}
+
+.counters .container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  text-align: center;
+}
+
+
+.counters .counter {
+  font-size: 45px;
+  margin: 10px 0;
+}
+
+@media (max-width: 700px) {
+  .counters .container {
+    grid-template-columns: repeat(2, 1fr);
   }
-  
-  .counter-count
-  {
-      font-size: 50px;
-      font-weight: bold;
-      position: relative;
-      color: #000000;
-      text-align: center;
-      display: inline-block;
+
+  .counters .container > div:nth-of-type(1),
+  .counters .container > div:nth-of-type(2) {
+    border-bottom: 1px lightskyblue solid;
+    padding-bottom: 20px;
   }
-  h3{
-      color: blue;
-  }
+}
