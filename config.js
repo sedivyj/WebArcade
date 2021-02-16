@@ -22,7 +22,6 @@ const dev = {
     }
 };
 
-// TODO: How to handle ca for production
 // CONFIG FOR PRODUCTION ENVIRONMENT
 const prod = {
     app: {
@@ -40,7 +39,6 @@ const prod = {
     }
 }
 
-// TODO: Create dev and prod versions & create test db in azure
 const config = {
     dev,
     prod
