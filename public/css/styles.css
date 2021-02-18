@@ -14,6 +14,15 @@ body::-webkit-scrollbar {
   max-height: 800px; 
   position: relative;
 }
+#score{
+    display: block;
+    max-width: 100%;
+    height: auto;
+    min-height: 200px;
+    max-height: 800px; 
+    position: relative;
+    padding-top: 50px;
+}
 #about-p {
     text-align:center;
     margin-left: 33%;
@@ -54,4 +63,8 @@ h1{
     grid-template-columns: repeat(2, 1fr);
     text-align: center;
     padding-left: 20%; 
+}
+
+.description{
+    color: white;
 }
