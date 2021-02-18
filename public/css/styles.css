@@ -7,7 +7,11 @@ body::-webkit-scrollbar {
 }
 
 #bannerHome{
-    margin-top: 51px;
+  display: block;
+  max-width: 100%;
+  height: auto;
+  min-height: 400px;
+  max-height: 800px; 
 }
 #about-p {
     text-align:center;
@@ -31,4 +35,22 @@ h1{
 {
     height: 207px;
     width: 100%;
+}
+
+.profiles{
+    display: block;
+    max-width: 100%;
+    height: auto;
+    min-height: 300px;
+    max-height: 300px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-left: 20px; 
+    border-bottom: 1px lightskyblue solid;
+}
+.about{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    text-align: center;
+    padding-left: 20%; 
 }
