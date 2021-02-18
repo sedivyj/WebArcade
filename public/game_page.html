@@ -1,42 +1,64 @@
+
 <!doctype html>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>Frog Game</title>
-        <link rel="stylesheet" href="css/styles.css">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    </head>
-    <body>
-<nav class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container-fluid">
-              <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-                <a class="navbar-brand" href="index.html"><i>Capstone Web Arcade</i></a>
-              </div>
-              <div class="collapse navbar-collapse" id="myNavbar">
-              <ul class="nav navbar-nav">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="high_scores.html">High Scores</a></li>
-              </ul>
-              </div>
-          
-  </div>
-</nav>
-        <div id="gameDiv" >
-            <span id="game">
-            </span>            
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Frog Game</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/gamepage.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="index.html"><i>Capstone Web Arcade</i></a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="high_scores.html">High Scores</a></li>
+      </ul>
+    </div>
+  </nav>
+  <div class="grid-container">
+    <div class="item1">
+      <h1 id="gameTitle">Game Title</h1>
+    </div>
+    <div class="item2" id="leaderboardDiv">
+      <table>
+        <tr>
+          <th colspan="3">
+            <h3>Leaderboard</h3>
+          </th>
+        </tr>
+        <div id="leaderboardTbl">
+          <!-- Follow this format when creating each row from the database
+          <tr>
+            <td class="rowNum">#.</td>
+            <td class="initals">[Initials]</td>
+            <td class="score">[Score]</td>
+          </tr>
+        -->
         </div>
-    </body>
-    <script type="text/javascript" src="javascript/phaser.min.js"></script>
-    <script type="text/javascript" src="javascript/FrogGame.js"></script>
+      </table>
+    </div>
+    <div class="item3" id="gameDiv">
+      <span id="game">
+      </span>
+    </div>
+    <div class="item4">
+      <h2 id="gameCreator">Creators</h2>
+    </div>
+  </div>
+</body>
+<script type="text/javascript" src="javascript/phaser.min.js"></script>
+<script type="text/javascript" src="javascript/FrogGame.js"></script>
 </html>
