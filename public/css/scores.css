@@ -8,7 +8,6 @@
 
 
 scoreBody {
-
   color: #fff;
   /* Push to bottom */
   display: flex;
@@ -44,7 +43,6 @@ scoreBody {
 .counters .counter {
   font-size: 45px;
   margin: 10px 0;
-
 }
 
 @media (max-width: 700px) {
@@ -57,4 +55,8 @@ scoreBody {
     border-bottom: 1px lightskyblue solid;
     padding-bottom: 20px;
   }
+}
+
+.hspage{
+  position:relative;
 }

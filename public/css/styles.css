@@ -12,6 +12,7 @@ body::-webkit-scrollbar {
   height: auto;
   min-height: 400px;
   max-height: 800px; 
+  position: relative;
 }
 #about-p {
     text-align:center;
