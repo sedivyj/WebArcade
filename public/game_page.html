@@ -28,18 +28,48 @@
     </div>
   </nav>
   <div class="grid-container">
-    <div class="item1" id="gameTitle">Game Title</div>
+    <div class="item1">
+      <h1 id="gameTitle">Game Title</h1>
+    </div>
     <div class="item2" id="leaderboardDiv">
-      <ol>
+      <h3>Leaderboard</h3>
+      <ol id="leaderboard">
         <li>SPB 10000</li>
         <li>JS 5000</li>
       </ol>
+      <hr class="solid">
+      <table>
+        <tr>
+          <th colspan="3">
+            <h3>Leaderboard</h3>
+          </th>
+        </tr>
+        <div id="leaderboardTbl">
+          <tr>
+            <td class="rowNum">1.</td>
+            <td class="initals">SPB</td>
+            <td class="score">10000</td>
+          </tr>
+          <tr>
+            <td class="rowNum">2.</td>
+            <td class="initals">JS</td>
+            <td class="score">5000</td>
+          </tr>
+          <tr>
+            <td class="rowNum">3.</td>
+            <td class="initals">LF</td>
+            <td class="score">100</td>
+          </tr>
+        </div>
+      </table>
     </div>
     <div class="item3" id="gameDiv">
       <span id="game">
       </span>
     </div>
-    <div class="item4" id="gameCredits"></div>
+    <div class="item4">
+      <h2 id="gameCreator">Creators</h2>
+    </div>
   </div>
 </body>
 <script type="text/javascript" src="javascript/phaser.min.js"></script>
