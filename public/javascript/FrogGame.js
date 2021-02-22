@@ -507,6 +507,7 @@ function bootStrap() {
             //globalGameState = "gameplay";                    
         } else {
             console.log('whatever');
+            sendScore()
             txt_DynamicPromptMessage = "GAME OVER\nSCORE: " + txt_CurrentScoreValue  + "\nPress ENTER KEY\nto continue";
         }
     }
@@ -744,6 +745,7 @@ function bootStrap() {
             console.log('Game Beaten!');
             player.kill();
             txt_DynamicPromptMessage = "YOU HAVE SAVED\nALL FIVE FROGS\nTHE END";
+            sendScore()
             countdownTimer.removeAll();
     }
 
