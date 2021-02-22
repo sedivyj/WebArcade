@@ -9,31 +9,90 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  
+  
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" type="text/css" href="css/scores.css">
+
+  
+  
 </head>
 
 <body>
 
 
+
 <nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="index.html"><i>Capstone Web Arcade</i></a>
-
-    </div>
-    <ul class="nav navbar-nav">
-      <li ><a href="#">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="contact.html">Contact</a></li>
-      <li class="active"><a href="high_scores.html">High Scores</a></li>
-    </ul>
+              <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+                <a class="navbar-brand" href="index.html"><i>Capstone Web Arcade</i></a>
+              </div>
+              <div class="collapse navbar-collapse" id="myNavbar">
+              <ul class="nav navbar-nav">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="high_scores.html">High Scores</a></li>
+              </ul>
+              </div>
+          
   </div>
 </nav>
 
-  <img id = "bannerHome" src="images/banner/high_score.jpg" alt="" width="100%" height="350px">
+  <div class="hspage">
+  <div class = "hsbanner">
+  <img id="score" src="images/banner/High-Score-4k_trimmed.gif">
+  </div>
 
-  
-<h1><br><br><br>High Score Page </h1>
+
+  <div class = scoreBody>
+    <section class="counters">
+      <div class="container">
+        <div class = "game">
+          <h3>FROGGER</h3>
+          <i class="fab fa-frogger fa-4x"></i>
+          <img src="images/thumbnail/froggerThumbNailjpg.jpg" alt="frogger" style="width:100px;height:100px;">
+          <div class="counter" data-target="600">0</div>
+          <h3>SJF</h3>
+        </div>
+        <div class = "game">
+          <h3>ASTEROIDS</h3>
+          <i class="fab fa-twitter fa-4x"></i>
+          <img src="images/thumbnail/froggerThumbNailjpg.jpg" alt="frogger" style="width:100px;height:100px;">
+          <div class="counter" data-target="150">0</div>
+          <h3>JJS</h3>
+        </div>
+        <div class = "game">
+          <h3>TETRIS</h3>
+          <i class="fab fa-facebook fa-4x"></i>
+          <img src="images/thumbnail/froggerThumbNailjpg.jpg" alt="frogger" style="width:100px;height:100px;">
+          <div class="counter" data-target="900">0</div>
+          <h3>LMF</h3>
+        </div>
+        <div class = "game">
+          <h3>DRAGON SLAYER</h3>
+          <i class="fab fa-linkedin fa-4x"></i>
+          <img src="images/thumbnail/froggerThumbNailjpg.jpg" alt="frogger" style="width:100px;height:100px;">
+          <div class="counter" data-target="500">0</div>
+          <h3>TMV</h3>
+        </div>
+        <div class = "game">
+          <h3>STAR WARS</h3>
+          <i class="fab fa-twitter fa-4x"></i>
+          <img src="images/thumbnail/froggerThumbNailjpg.jpg" alt="frogger" style="width:100px;height:100px;">
+          <div class="counter" data-target="150">0</div>
+          <h3>JJS</h3>
+        </div>
+      </div>
+    </section>
+    </div>
+    </div>
+  <script src="js/scores.js"></script>
 
 
 </body>
