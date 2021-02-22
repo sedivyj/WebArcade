@@ -746,4 +746,19 @@ function bootStrap() {
             txt_DynamicPromptMessage = "YOU HAVE SAVED\nALL FIVE FROGS\nTHE END";
             countdownTimer.removeAll();
     }
+
+    function sendScore() {
+        
+        var initials = prompt("Please enter your initials);
+
+        //send score to database
+        //user initials:
+        initials
+        //score variable:
+        txt_CurrentScoreValue
+
+        //sample SQL
+        INSERT INTO score
+        VALUES ($ScoreID, $GameID, $Score, $UserInitials);
+    }
 };
