@@ -749,7 +749,7 @@ function bootStrap() {
 
     function sendScore() {
         
-        var initials = prompt("Please enter your initials);
+        var initials = prompt("Please enter your initials");
 
         //send score to database
         //user initials:
