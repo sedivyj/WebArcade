@@ -10,6 +10,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/carousel.css">
+  <link rel="stylesheet" href="css/gameCarousel.css">
   
 </head>
 <body>
@@ -62,9 +63,9 @@
 
 <!-- The dots/circles -->
 <div style="text-align:center">
-  <span class="dot" ></span>
-  <span class="dot" ></span>
-  <span class="dot" ></span>
+  <span class="dotb" ></span>
+  <span class="dotb" ></span>
+  <span class="dobt" ></span>
 </div>
 
 
@@ -73,22 +74,87 @@
   
 <h1><br><br><br>Hello Capstone Shall We Play Some Frogger</h1>
 
-<div class="container">
-  <div class="row">
-    <div class="col-md-1-12">
+
+
+<div class ="slideshow-containerG">
+  <div class = "mySlidesG">
+    <table style="width: 100%">
+      <tr>
+        <td>
+          <a href="game_page.html">
+            <img src="images/thumbnail/froggerThumbNailjpg.jpg" alt="frogger" style="width:100px;height:100px;">
+          </a>
+      </td>
+      <td>
+        <a href="game_page.html">
+          <img src="images/thumbnail/froggerThumbNailjpg.jpg" alt="frogger" style="width:100px;height:100px;">
+        </a>
+    </td>
+    <td>
       <a href="game_page.html">
         <img src="images/thumbnail/froggerThumbNailjpg.jpg" alt="frogger" style="width:100px;height:100px;">
       </a>
-    </div>
-    
+  </td>
+      </tr>
+    </table>
   </div>
+  <div class ="mySlidesG">
+    <table style="width: 100%">
+      <tr>
+        <td>
+          <a href="game_page.html">
+            <img src="images/thumbnail/froggerThumbNailjpg.jpg" alt="frogger" style="width:100px;height:100px;">
+          </a>
+      </td>
+      <td>
+        <a href="game_page.html">
+          <img src="images/thumbnail/froggerThumbNailjpg.jpg" alt="frogger" style="width:100px;height:100px;">
+        </a>
+    </td>
+    <td>
+      <a href="game_page.html">
+        <img src="images/thumbnail/pac_man_hed.jpg" alt="frogger" style="width:100px;height:100px;">
+      </a>
+  </td>
+      </tr>
+    </table>
+  </div>
+  <div class ="mySlidesG">
+    <table style="width: 100%">
+      <tr>
+        <td>
+          <a href="game_page.html">
+            <img src="images/thumbnail/froggerThumbNailjpg.jpg" alt="frogger" style="width:100px;height:100px;">
+          </a>
+      </td>
+      <td>
+        <a href="game_page.html">
+          <img src="images/thumbnail/pac_man_hed.jpg" alt="frogger" style="width:100px;height:100px;">
+        </a>
+    </td>
+    <td>
+      <a href="game_page.html">
+        <img src="images/thumbnail/froggerThumbNailjpg.jpg" alt="frogger" style="width:100px;height:100px;">
+      </a>
+  </td>
+      </tr>
+    </table>
+  </div>
+  <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+  <a class="next" onclick="plusSlides(1)">&#10095;</a>
 </div>
+<br>
 
-
-    
+<!-- The dots/circles -->
+<div style="text-align:center">
+  <span class="dot" onclick="currentSlide(1)"></span>
+  <span class="dot" onclick="currentSlide(2)"></span>
+  <span class="dot" onclick="currentSlide(3)"></span>
+</div>
    
   
 <script src="javascript/carousel.js"></script>
+<script src="javascript/gameCarousel.js"></script>
 
 </body>
 </html>

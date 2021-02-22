@@ -2,9 +2,7 @@ body{
     background-color: black;
     overflow-y: scroll;
 }
-body::-webkit-scrollbar {
-    display: none;
-}
+
 
 #bannerHome{
   display: block;
