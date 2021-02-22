@@ -6,11 +6,10 @@ body{
 
 #bannerHome{
   display: block;
-  max-width: 100%;
-  height: auto;
-  min-height: 400px;
-  max-height: 800px; 
+
+
   position: relative;
+  margin-top: 51px;
 }
 #score{
     display: block;
