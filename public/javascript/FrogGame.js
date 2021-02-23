@@ -758,21 +758,16 @@ function bootStrap() {
     }
 
     function sendScore() {
-        
+        // Getting player's initials
         var initials = prompt("Please enter your initials");
-
-        //send score to database
-        //user initials:
-        // initials
-        //score variable:
-        // txt_CurrentScoreValue
+        // preparing post data
         postData = {
             'scoreid': null,
             'gameid': 1,
             'score': txt_CurrentScoreValue,
-            'initials': initials
+            'initial': initials
         }
-
+        // Make endpoint call
         fetch('/submitScore', {
             method: 'POST',
             headers: {
@@ -780,12 +775,10 @@ function bootStrap() {
             },
             body: JSON.stringify(postData)
         })
-        .then(response => response.status)
-        .then(status => console.log(status))
-        .catch(error => console.log(error));
-        //sample SQL
-        // INSERT INTO score
-        // VALUES ($ScoreID, $GameID, $Score, $UserInitials);
+        .then(response => response.status) // we want status returned
+        .then(status => console.log(status)) // log status
+        .catch(error => console.log(error)); // log error
+
     }
 
 };
