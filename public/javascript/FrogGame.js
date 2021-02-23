@@ -39,6 +39,7 @@ function bootStrap() {
     
     var deathNote = 0;
     var order66 = false;
+    var scoreSent = false;
 
     var txt_SecondsLeft;
     var timeleft_seconds;
@@ -504,10 +505,14 @@ function bootStrap() {
             frogsSaved = 0;
             console.log('department of the interior:' + globalGameState);
             respawnPlayer();
+            scoreSent = false;
             //globalGameState = "gameplay";                    
         } else {
             console.log('whatever');
-            sendScore()
+            if(!scoreSent){
+                sendScore();
+                scoreSent = True;
+            }
             txt_DynamicPromptMessage = "GAME OVER\nSCORE: " + txt_CurrentScoreValue  + "\nPress ENTER KEY\nto continue";
         }
     }
@@ -745,7 +750,10 @@ function bootStrap() {
             console.log('Game Beaten!');
             player.kill();
             txt_DynamicPromptMessage = "YOU HAVE SAVED\nALL FIVE FROGS\nTHE END";
-            sendScore()
+            if(!scoreSent){
+                sendScore()
+                scoreSent = true;
+            }
             countdownTimer.removeAll();
     }
 
