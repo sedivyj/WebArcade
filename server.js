@@ -13,17 +13,30 @@ app.use(express.static(__dirname + '/public'));
 
 // Example of using DB
 app.use('/testdb', (req, res)=> {
+    res.sendFile(__dirname + '/testdb.html')
+})
+
+// Example of using DB GET method
+app.use('/testdbAPI', (req, res)=> {
     // Get DB Connection Object
     const db = getDb();
-    // Run query with callback
-    db.query('SELECT * FROM test_table;', (error, results, fields) => {
-        // Check for errors
-        if(error) {
-            res.send(`ERROR:\n${error}`);
+    // Getting gameId from header
+    const gameid = req.headers.gameid;
+    // Prepared statement
+    const prepStmt = 'SELECT * FROM game WHERE gameid=?;'
+    // Run query
+    db.query(prepStmt, gameid, (error, result, fields) => {
+        // Error Checking
+        if (error) {
+            // How to handle err
+            res.json(null);
         } else {
-            res.json(results);
+            // Create JSON String and return
+            const gameJsonStr = JSON.stringify(result);
+            // telling client-side that it is a JSON response and not reroute
+            res.json(gameJsonStr);
         }
-    });
+    })
 })
 
 // Initializes DB connection and Starts App
