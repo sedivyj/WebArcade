@@ -511,7 +511,7 @@ function bootStrap() {
             console.log('whatever');
             if(!scoreSent){
                 sendScore();
-                scoreSent = True;
+                scoreSent = true;
             }
             txt_DynamicPromptMessage = "GAME OVER\nSCORE: " + txt_CurrentScoreValue  + "\nPress ENTER KEY\nto continue";
         }
