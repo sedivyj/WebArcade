@@ -1,11 +1,12 @@
 function setupGamePage() {
+  console.log("running set up");
   var gameid = 1;
   // Define variables with place holder data
   var gameInfo = getGameInfo(gameid); // Assumes controller returns results as 2d array
   var top10Scores = getTop10Scores(gameid); // Assumes controller returns results as 2d array
   //
-  document.getElementById("gameTitle").innerText = "test"; // gameInfo[0][0];
-  document.getElementById("gameCreator").innerText = "test"; // gameInfo[0][1];
+  document.getElementById("gameTitle").innerText = gameInfo[0][0];
+  document.getElementById("gameCreator").innerText = "Made by: " + gameInfo[0][1];
   var leaderboard = document.getElementById("leaderboardTbl");
   for (var i = 1; i <= 10; i++) {
     var tblRow = document.createElement("tr");

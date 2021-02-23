@@ -14,7 +14,7 @@
   <script type="text/javascript" src="javascript/gamePageSetup.js"></script>
 </head>
 
-<body onload="setupGamePage();">
+<body>
   <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
       <div class="navbar-header">
@@ -33,21 +33,19 @@
       <h1 id="gameTitle"></h1>
     </div>
     <div class="item2" id="leaderboardDiv">
-      <table>
+      <table id="leaderboardTbl">
         <tr>
           <th colspan="3">
             <h3>Leaderboard</h3>
           </th>
         </tr>
-        <div id="leaderboardTbl">
-          <!-- Follow this format when creating each row from the database 
-          <tr class="tblRow">
-            <td class="rowNum">#.</td>
-            <td class="initials">[Initials]</td>
-            <td class="score">[Score]</td>
-          </tr>
+        <!-- Follow this format when creating each row from the database 
+        <tr class="tblRow">
+          <td class="rowNum">#.</td>
+          <td class="initials">[Initials]</td>
+          <td class="score">[Score]</td>
+        </tr>
         -->
-        </div>
       </table>
     </div>
     <div class="item3" id="gameDiv">
