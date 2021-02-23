@@ -755,12 +755,29 @@ function bootStrap() {
 
         //send score to database
         //user initials:
-        initials
+        // initials
         //score variable:
-        txt_CurrentScoreValue
+        // txt_CurrentScoreValue
+        postData = {
+            'scoreid': null,
+            'gameid': 1,
+            'score': txt_CurrentScoreValue,
+            'initials': initials
+        }
 
+        fetch('/submitScore', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(postData)
+        })
+        .then(response => response.status)
+        .then(status => console.log(status))
+        .catch(error => console.log(error));
         //sample SQL
-        INSERT INTO score
-        VALUES ($ScoreID, $GameID, $Score, $UserInitials);
+        // INSERT INTO score
+        // VALUES ($ScoreID, $GameID, $Score, $UserInitials);
     }
+
 };
