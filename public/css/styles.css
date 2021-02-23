@@ -2,17 +2,14 @@ body{
     background-color: black;
     overflow-y: scroll;
 }
-body::-webkit-scrollbar {
-    display: none;
-}
+
 
 #bannerHome{
   display: block;
-  max-width: 100%;
-  height: auto;
-  min-height: 400px;
-  max-height: 800px; 
+
+
   position: relative;
+  margin-top: 51px;
 }
 #score{
     display: block;
@@ -67,4 +64,11 @@ h1{
 
 .description{
     color: white;
+}
+
+.gameContainer > h1{
+    text-align: center;
+    margin-top: 100px;
+    margin-bottom: 50px;
+    
 }
