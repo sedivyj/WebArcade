@@ -1,6 +1,6 @@
 
-hr.solid{
-  border-top: 5px solid #000;
+body{
+  background-color: #151515;
 }
 
 td.rowNum{
@@ -47,11 +47,20 @@ td.score{
   text-align: center;
 }
 
+#gameTitle{
+  color: #f0f0f0
+}
+
+#gameCreator{
+  color: #b9b9b9
+}
+
 #leaderboardDiv{
   text-align: center;
   font-family: monospace;
   display: table;
   margin: 0 auto;
+  color: #cfcfcf
 }
 
 #gameDiv{
