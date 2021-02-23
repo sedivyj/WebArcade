@@ -1,5 +1,4 @@
 window.onload = function () {
-  console.log("running game");
   setupGamePage(1);
   bootStrap();
 }

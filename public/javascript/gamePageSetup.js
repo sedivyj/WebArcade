@@ -1,5 +1,4 @@
 function setupGamePage() {
-  console.log("running set up");
   var gameid = 1;
   // Define variables with place holder data
   var gameInfo = getGameInfo(gameid); // Assumes controller returns results as 2d array
