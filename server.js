@@ -43,7 +43,7 @@ app.use('/testdbAPI/:id', (req, res)=> {
 })
 
 // Example of using DB GET method
-app.use('/getScore', (req, res)=> {
+app.use('/getHighScore', (req, res)=> {
     console.log("is this getting called?")
     // Get DB Connection Object
     const db = getDb();
@@ -55,12 +55,10 @@ app.use('/getScore', (req, res)=> {
     db.query(prepStmt, gameid, (error, result, fields) => {
         // Error Checking
         if (error) {
-            console.log("hi")
             // How to handle err
             res.json(null);
 
         } else {
-            console.log("its I")
             // Create JSON String and return
             const gameJsonStr = JSON.stringify(result);
             // telling client-side that it is a JSON response and not reroute
