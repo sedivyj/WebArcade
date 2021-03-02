@@ -1,13 +1,13 @@
 const express = require('express');
 const port = require('./config.js').app.port
 
-console.log(port)
-
 // DB Module Functions
 const initDb = require('./db').initDb;
 const getDb = require('./db').getDb;
 
 const app = express();
+
+app.use(express.json()); // Middleware for handling JSON
 
 app.use(express.static(__dirname + '/public'));
 
@@ -17,20 +17,23 @@ app.use('/testdb', (req, res)=> {
 })
 
 // Example of using DB GET method
-app.use('/testdbAPI', (req, res)=> {
+app.use('/testdbAPI/:id', (req, res)=> {
     // Get DB Connection Object
     const db = getDb();
     // Getting gameId from header
-    const gameid = req.headers.gameid;
+    const gameid = req.params.id
+    console.log(gameid)
     // Prepared statement
     const prepStmt = 'SELECT * FROM game WHERE gameid=?;'
     // Run query
     db.query(prepStmt, gameid, (error, result, fields) => {
         // Error Checking
         if (error) {
+            res.status(500);
             // How to handle err
             res.json(null);
         } else {
+            res.status(200);
             // Create JSON String and return
             const gameJsonStr = JSON.stringify(result);
             // telling client-side that it is a JSON response and not reroute
