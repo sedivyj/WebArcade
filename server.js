@@ -35,9 +35,7 @@ app.use('/testdbAPI/:id', (req, res)=> {
         } else {
             res.status(200);
             // Create JSON String and return
-            const gameJsonStr = JSON.stringify(result);
-            // telling client-side that it is a JSON response and not reroute
-            res.json(gameJsonStr);
+            res.json(result);
         }
     })
 })

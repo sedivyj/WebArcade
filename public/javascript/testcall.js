@@ -17,7 +17,7 @@ function toExpress() {
 }
 
 function success(data) {
-    output.text(data);
+    output.text(JSON.stringify(data));
 }
 
 function errfx(err) {
