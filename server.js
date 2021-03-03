@@ -1,14 +1,14 @@
 const express = require('express');
 const port = require('./config.js').app.port
 
-console.log(port)
-
 // DB Module Functions
 const initDb = require('./db').initDb;
 const getDb = require('./db').getDb;
 
 const app = express();
 app.use(express.json());
+
+app.use(express.json()); // Middleware for handling JSON
 
 app.use(express.static(__dirname + '/public'));
 
@@ -46,19 +46,45 @@ app.use('/testdb', (req, res)=> {
 })
 
 // Example of using DB GET method
-app.use('/testdbAPI', (req, res)=> {
+app.use('/testdbAPI/:id', (req, res)=> {
     // Get DB Connection Object
     const db = getDb();
     // Getting gameId from header
-    const gameid = req.headers.gameid;
+    const gameid = req.params.id
+    console.log(gameid)
     // Prepared statement
     const prepStmt = 'SELECT * FROM game WHERE gameid=?;'
     // Run query
     db.query(prepStmt, gameid, (error, result, fields) => {
         // Error Checking
         if (error) {
+            res.status(500);
             // How to handle err
             res.json(null);
+        } else {
+            res.status(200);
+            // Create JSON String and return
+            res.json(result);
+        }
+    })
+})
+
+// Example of using DB GET method
+app.use('/getHighScore', (req, res)=> {
+    console.log("is this getting called?")
+    // Get DB Connection Object
+    const db = getDb();
+    // Getting gameId from header
+    const gameid = req.headers.gameid;
+    // Prepared statement
+    const prepStmt = 'SELECT score.* FROM score WHERE score = ( SELECT MAX(score) FROM score)'
+    // Run query
+    db.query(prepStmt, gameid, (error, result, fields) => {
+        // Error Checking
+        if (error) {
+            // How to handle err
+            res.json(null);
+
         } else {
             // Create JSON String and return
             const gameJsonStr = JSON.stringify(result);

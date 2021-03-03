@@ -3,14 +3,12 @@ body{
     overflow-y: scroll;
 }
 
-
 #bannerHome{
   display: block;
-
-
   position: relative;
   margin-top: 51px;
 }
+
 #score{
     display: block;
     max-width: 100%;
@@ -20,6 +18,7 @@ body{
     position: relative;
     padding-top: 50px;
 }
+
 #about-p {
     text-align:center;
     margin-left: 33%;
@@ -28,20 +27,10 @@ body{
     font-size: large;
     color:white;
 }
+
 h1{
     text-align: center;
     color:white
-}
-
-#gameDiv{
-    text-align: center;
-    margin-top: 51px;
-
-}
-#bContainer
-{
-    height: 207px;
-    width: 100%;
 }
 
 .profiles{
@@ -70,5 +59,4 @@ h1{
     text-align: center;
     margin-top: 100px;
     margin-bottom: 50px;
-    
 }

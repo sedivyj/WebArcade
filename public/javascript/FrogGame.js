@@ -780,5 +780,4 @@ function bootStrap() {
         .catch(error => console.log(error)); // log error
 
     }
-
 };
