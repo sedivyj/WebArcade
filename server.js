@@ -6,10 +6,39 @@ const initDb = require('./db').initDb;
 const getDb = require('./db').getDb;
 
 const app = express();
+app.use(express.json());
 
 app.use(express.json()); // Middleware for handling JSON
 
 app.use(express.static(__dirname + '/public'));
+
+// Endpoint for submitting score from game to DB
+app.use('/submitScore', (req, res) => {
+    // Check for Body
+    if(req.body) {
+        // Get Connection DB Object
+        const db = getDb();
+        const prepStmt = 'INSERT INTO score (scoreid, fk_gameid, score, initial) VALUES (?, ?, ?, ?)'
+        // Get data from body
+        const scoreid = req.body.scoreid
+        const gameid = req.body.gameid
+        const score = req.body.score
+        const initial = req.body.initial
+        // Run Query
+        db.query(prepStmt, [scoreid, gameid, score, initial], (error, result, fields) => {
+            if (error) { 
+                console.log(error)
+                res.status(500).end(); // Server error
+            }
+            else {
+                console.log(`New SCOREID: ${result.insertId}`)
+                res.status(200).end() // success
+            }
+        })
+    } else {
+        res.status(500).end()
+    }
+})
 
 // Example of using DB
 app.use('/testdb', (req, res)=> {
