@@ -47,7 +47,9 @@ app.use('/getHighScore/:id', (req, res)=> {
     // Get DB Connection Object
     const db = getDb();
     // Prepared statement
-    const prepStmt = 'SELECT score.* FROM score WHERE score = ( SELECT MAX(score) FROM score) and gameid=?'
+    const gameid = req.params.id
+
+    const prepStmt = 'SELECT score.* FROM score WHERE score = ( SELECT MAX(score) FROM score) and fk_gameid=?'
     // Run query
     db.query(prepStmt, gameid, (error, result, fields) => {
         // Error Checking

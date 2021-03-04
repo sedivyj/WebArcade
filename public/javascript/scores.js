@@ -1,16 +1,16 @@
 games = ['#frogger_score'] // replace with get games query
-for (game in games) {
-  getHighScore(game)
+for (let i=0; i<games.length; i++ ) {
+  getHighScore(games[i])
 }
-startScoreCount()
 
 function getHighScore(id){
   let score = $(id);
+  console.log(id)
   // Function to run when the DOM is ready
   $(() => { toExpress(); })
   function toExpress() {
       // FETCHING
-      fetch(`/getHighScore/?=1`,
+      fetch(`/getHighScore/1`,
       {
           method: 'GET',
           headers: {
@@ -23,9 +23,11 @@ function getHighScore(id){
           console.log(data[0].score)
           score.attr('data-target',data[0].score)
           console.log(score.attr('data-target'))
+          startScoreCount()
       })
       .catch(error => {
         score.text(error)
+        console.log("is this called?")
       }); // if bad call
   }
 }
