@@ -43,14 +43,11 @@ app.use('/testdbAPI/:id', (req, res)=> {
 })
 
 // Example of using DB GET method
-app.use('/getHighScore', (req, res)=> {
-    console.log("is this getting called?")
+app.use('/getHighScore/:id', (req, res)=> {
     // Get DB Connection Object
     const db = getDb();
-    // Getting gameId from header
-    const gameid = req.headers.gameid;
     // Prepared statement
-    const prepStmt = 'SELECT score.* FROM score WHERE score = ( SELECT MAX(score) FROM score)'
+    const prepStmt = 'SELECT score.* FROM score WHERE score = ( SELECT MAX(score) FROM score) and gameid=?'
     // Run query
     db.query(prepStmt, gameid, (error, result, fields) => {
         // Error Checking
