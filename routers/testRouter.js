@@ -1,5 +1,7 @@
 // DEFINES ROUTES FOR {HOST}/test/* 
 // Used for testing
+const SQL_DB_GAME = require('../sql/mysqlController.js')
+
 const express = require('express')
 const path = require('path')
 const getDb = require('../db.js').getDb;
@@ -36,6 +38,26 @@ router.use('/testdbAPI/:id', (req, res)=> {
             res.json(result);
         }
     })
+})
+
+router.use('/getGame/:id?', async (req, res)=> {
+    // Getting gameId from header
+    const gameid = req.params.id
+    
+    if (gameid) {
+        try {
+            const game = await SQL_DB_GAME.getGameDetails(gameid)
+            // telling client-side that it is a JSON response and not reroute
+            
+            return res.json(game);
+        } catch (err) {
+            return res.status(500).json({
+                error: true, message: 'Could not get game'
+            })
+        }
+    } else { // TO-DO: return all games
+        return res.status(400).end()
+    }
 })
 
 module.exports = router

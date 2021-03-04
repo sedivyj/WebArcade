@@ -1,5 +1,5 @@
 const SQL_DB_GAME = require('../sql/mysqlController.js')
-// import * as SQL_DB_GAME from '../sql/mysqlController.js'
+// impo0rt * as SQL_DB_GAME from '../sql/mysqlController.js'
 const express = require('express')
 // import express from 'express'
 const router = express.Router()
