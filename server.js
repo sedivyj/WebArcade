@@ -16,9 +16,9 @@ const testRouter = require('./routers/testRouter');
 // Setting up Middleware
 app.use(express.json()); // Middleware for handling JSON
 app.use(express.static(path.join(__dirname, 'public'))); // Defining where static files will be found
-app.use('/test', testRouter);
 app.use('/game', gameRouter);
 app.use('/score', scoreRouter);
+app.use('/test', testRouter);
 
 // Initializes DB connection and Starts App
 initDb((err) => {
