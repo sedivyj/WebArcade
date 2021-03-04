@@ -1,3 +1,4 @@
+
 games = ['#frogger_score'] // replace with get games query
 for (let i=0; i<games.length; i++ ) {
   getHighScore(games[i])

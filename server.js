@@ -1,15 +1,24 @@
+
+const gameRouter = require('./routes/game')
+
+
 const express = require('express');
 const port = require('./config.js').app.port
 
 // DB Module Functions
 const initDb = require('./db').initDb;
 const getDb = require('./db').getDb;
+ 
 
 const app = express();
 
 app.use(express.json()); // Middleware for handling JSON
 
 app.use(express.static(__dirname + '/public'));
+
+app.use(gameRouter)
+
+// app.use('/game',gameRouter)
 
 // Example of using DB
 app.use('/testdb', (req, res)=> {
