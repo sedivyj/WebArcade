@@ -13,11 +13,11 @@ let output = $('#output');
 function toExpress() {
     const id = textBox.val();
     output.text('Fetching results...');
-    getById('/testdbAPI', id, success, errfx);
+    getById('/test/testdbAPI', id, success, errfx);
 }
 
 function success(data) {
-    output.text(data);
+    output.text(JSON.stringify(data));
 }
 
 function errfx(err) {

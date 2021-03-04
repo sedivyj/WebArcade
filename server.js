@@ -3,15 +3,21 @@ const gameRouter = require('./routes/game')
 
 
 const express = require('express');
+const path = require('path');
 const port = require('./config.js').app.port
 
 // DB Module Functions
 const initDb = require('./db').initDb;
+<<<<<<< HEAD
 const getDb = require('./db').getDb;
  
+=======
+>>>>>>> f462ba4d3c91f8a9a85381d086c84521a90c2306
 
+// Start of Web App
 const app = express();
 
+<<<<<<< HEAD
 app.use(express.json()); // Middleware for handling JSON
 
 app.use(express.static(__dirname + '/public'));
@@ -65,15 +71,17 @@ app.use('/getHighScore/:id', (req, res)=> {
         if (error) {
             // How to handle err
             res.json(null);
+=======
+// Initializing Routers
+const gameRouter = require('./routers/gameRouter.js');
+const testRouter = require('./routers/testRouter.js');
+>>>>>>> f462ba4d3c91f8a9a85381d086c84521a90c2306
 
-        } else {
-            // Create JSON String and return
-            const gameJsonStr = JSON.stringify(result);
-            // telling client-side that it is a JSON response and not reroute
-            res.json(gameJsonStr);
-        }
-    })
-})
+// Setting up Middleware
+app.use(express.json()); // Middleware for handling JSON
+app.use(express.static(path.join(__dirname, 'public'))); // Defining where static files will be found
+app.use('/test', testRouter);
+app.use('/game', gameRouter);
 
 // Initializes DB connection and Starts App
 initDb((err) => {

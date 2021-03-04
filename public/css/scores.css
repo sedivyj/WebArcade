@@ -7,9 +7,31 @@
 }
 
 
+
+.test{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  text-align: center;
+
+  color: rgb(10, 233, 77);
+  padding: 40px 20px;
+  border-top: 3px lightskyblue solid;
+
+  font-size: 45px;
+}
+
+.hsbanner{
+  padding-bottom: 3%;
+}
+
+.game{
+  border-bottom: 1px lightskyblue solid;
+}
+
+/*
 scoreBody {
   color: #fff;
-  /* Push to bottom */
+  /* Push to bottom 
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -35,23 +57,24 @@ scoreBody {
   text-align: center;
   
 }
+
 .game{
   border-bottom: 1px lightskyblue solid;
-
 }
 
 .counters .counter {
   font-size: 45px;
   margin: 10px 0;
 }
+*/
 
 @media (max-width: 700px) {
-  .counters .container {
+  .test {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .counters .container > div:nth-of-type(1),
-  .counters .container > div:nth-of-type(2) {
+  .test > div:nth-of-type(1),
+  .test > div:nth-of-type(2) {
     border-bottom: 1px lightskyblue solid;
     padding-bottom: 20px;
   }
