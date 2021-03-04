@@ -1,7 +1,7 @@
 const express = require('express')
 const path = require('path')
 const getDb = require('../db.js').getDb;
-const SQL_DB_GAME = require('../sql/mysqlController.js')
+const SQL_DB_SCORE = require('../sql/scoreController.js')
 
 
 // Define the Router Object to export
@@ -16,7 +16,7 @@ router.use('/getHighScore/:id', async (req, res)=> {
     const gameid = req.params.id
     // Prepared statement
     try {
-        const game = await SQL_DB_GAME.getGameHighScore(gameid)
+        const game = await SQL_DB_SCORE.getGameHighScore(gameid)
         // telling client-side that it is a JSON response and not reroute
         
         return res.json(game);
