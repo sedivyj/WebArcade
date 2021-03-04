@@ -4,7 +4,7 @@ let score = $('#frogger_score');
         function toExpress() {
             // FETCHING
             console.log("Hi")
-            fetch(`/getHighScore`,
+            fetch(`/game/getHighScore`,
             {
                 method: 'GET',
                 headers: {
