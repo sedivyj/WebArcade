@@ -1,69 +1,22 @@
 const express = require('express');
+const path = require('path');
 const port = require('./config.js').app.port
 
 // DB Module Functions
 const initDb = require('./db').initDb;
-const getDb = require('./db').getDb;
 
+// Start of Web App
 const app = express();
 
+// Initializing Routers
+const gameRouter = require('./routers/gameRouter.js');
+const testRouter = require('./routers/testRouter.js');
+
+// Setting up Middleware
 app.use(express.json()); // Middleware for handling JSON
-
-app.use(express.static(__dirname + '/public'));
-
-// Example of using DB
-app.use('/testdb', (req, res)=> {
-    res.sendFile(__dirname + '/testdb.html')
-})
-
-// Example of using DB GET method
-app.use('/testdbAPI/:id', (req, res)=> {
-    // Get DB Connection Object
-    const db = getDb();
-    // Getting gameId from header
-    const gameid = req.params.id
-    console.log(gameid)
-    // Prepared statement
-    const prepStmt = 'SELECT * FROM game WHERE gameid=?;'
-    // Run query
-    db.query(prepStmt, gameid, (error, result, fields) => {
-        // Error Checking
-        if (error) {
-            res.status(500);
-            // How to handle err
-            res.json(null);
-        } else {
-            res.status(200);
-            // Create JSON String and return
-            res.json(result);
-        }
-    })
-})
-
-// Example of using DB GET method
-app.use('/getHighScore', (req, res)=> {
-    console.log("is this getting called?")
-    // Get DB Connection Object
-    const db = getDb();
-    // Getting gameId from header
-    const gameid = req.headers.gameid;
-    // Prepared statement
-    const prepStmt = 'SELECT score.* FROM score WHERE score = ( SELECT MAX(score) FROM score)'
-    // Run query
-    db.query(prepStmt, gameid, (error, result, fields) => {
-        // Error Checking
-        if (error) {
-            // How to handle err
-            res.json(null);
-
-        } else {
-            // Create JSON String and return
-            const gameJsonStr = JSON.stringify(result);
-            // telling client-side that it is a JSON response and not reroute
-            res.json(gameJsonStr);
-        }
-    })
-})
+app.use(express.static(path.join(__dirname, 'public'))); // Defining where static files will be found
+app.use('/test', testRouter);
+app.use('/game', gameRouter);
 
 // Initializes DB connection and Starts App
 initDb((err) => {
