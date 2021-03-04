@@ -1,6 +1,6 @@
 const express = require('express');
 const path = require('path');
-const port = require('./config.js').app.port
+const port = require('./config').app.port
 
 // DB Module Functions
 const initDb = require('./db').initDb;
@@ -9,8 +9,9 @@ const initDb = require('./db').initDb;
 const app = express();
 
 // Initializing Routers
-const gameRouter = require('./routers/gameRouter.js');
-const testRouter = require('./routers/testRouter.js');
+const gameRouter = require('./routers/gameRouter');
+const scoreRouter = require('./routers/scoreRouter')
+const testRouter = require('./routers/testRouter');
 
 // Setting up Middleware
 app.use(express.json()); // Middleware for handling JSON
