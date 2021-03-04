@@ -768,7 +768,7 @@ function bootStrap() {
             'initial': initials
         }
         // Make endpoint call
-        fetch('/submitScore', {
+        fetch('/score/submitScore', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
