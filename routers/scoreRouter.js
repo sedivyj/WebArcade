@@ -11,7 +11,7 @@ let router = express.Router()
 // router.use(express.static('public')) // Could be used for getting game assets
 
 // API for getting the high score for a game
-router.use('/getHighScore/:id', async (req, res)=> {
+router.use('/getGameHighScore/:id', async (req, res)=> {
     // Getting gameId from header
     const gameid = req.params.id
     // Prepared statement

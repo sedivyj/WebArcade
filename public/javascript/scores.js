@@ -1,45 +1,18 @@
-<<<<<<< HEAD
-=======
-let score = $('#frogger_score');
-        // Function to run when the DOM is ready
-        $(() => { toExpress(); })
-        function toExpress() {
-            // FETCHING
-            console.log("Hi")
-            fetch(`/game/getHighScore`,
-            {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
-            .then(response => response.json()) // telling how to handle response
-            .then((data) => { // function for handling successful return
-                data = JSON.parse(data)
-                console.log(data[0].score)
-                score.attr('data-target',data[0].score)
-                console.log(score.attr('data-target'))
-                startScoreCount()
-            })
-            .catch(error => {
-              score.text(error)
-            }); // if bad call
-        }
->>>>>>> f462ba4d3c91f8a9a85381d086c84521a90c2306
 
 games = ['#frogger_score'] // replace with get games query
+id = [1]
 for (let i=0; i<games.length; i++ ) {
-  getHighScore(games[i])
+  getHighScore(games[i], id[i])
 }
 
-function getHighScore(id){
-  let score = $(id);
-  console.log(id)
+function getHighScore(idName, id){
+  let score = $(idName);
+  // console.log(id)
   // Function to run when the DOM is ready
   $(() => { toExpress(); })
   function toExpress() {
       // FETCHING
-      fetch(`/getHighScore/1`,
+      fetch(`/score/getGameHighScore/${id}`,
       {
           method: 'GET',
           headers: {
@@ -48,10 +21,11 @@ function getHighScore(id){
       })
       .then(response => response.json()) // telling how to handle response
       .then((data) => { // function for handling successful return
-          data = JSON.parse(data)
-          console.log(data[0].score)
+        // console.log(data)  
+        // data = JSON.parse(data)
+          // console.log(data[0].score)
           score.attr('data-target',data[0].score)
-          console.log(score.attr('data-target'))
+          // console.log(score.attr('data-target'))
           startScoreCount()
       })
       .catch(error => {
