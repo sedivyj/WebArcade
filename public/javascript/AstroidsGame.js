@@ -5,10 +5,10 @@ function preload() {
     game.load.spritesheet('player', 'images/Astroids/glowShips.png', 344, 164, 10) //Player Character
     game.load.image('bullet', 'images/Astroids/Bullet.png') //Bullets
     game.load.image('asteroid', 'images/Astroids/SpaceRock.png') //Asteroids
-    game.load.image('startBtn', 'images/capstone.png') //Start Button
-    game.load.image('pauseBtn', 'images/capstone.png') //Pause Button
-    game.load.image('playAgain', '/images/capstone.png') //Play Again Button
-    game.load.image('resume', 'images/capstone.png') //Resume Button
+    game.load.image('startBtn', 'images/Astroids/startBtn.png') //Start Button
+    game.load.image('pauseBtn', 'images/Astroids/pauseBtn.png') //Pause Button
+    game.load.image('playAgain', 'images/Astroids/playAgain.png') //Play Again Button
+    game.load.image('resume', 'images/Astroids/resume.png') //Resume Button
     game.load.image('gameOver', 'images/Astroids/gameOverText.png') //Game Over Text
     game.load.image('ammo', 'images/Astroids/SpaceJunk.png') // Ammo powerup.
     game.load.image('roadster', 'images/Astroids/Roadster.png')
