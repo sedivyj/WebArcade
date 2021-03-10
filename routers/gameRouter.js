@@ -35,4 +35,50 @@ router.use('/getHighScore', (req, res)=> {
     })
 })
 
+// API for getting overall positive rating of a game
+router.use('/getOveralRating/:gameId', (req, res)=> {
+    // Get DB Connection Object
+    const db = getDb();
+    // Getting gameId from header
+    const body = req.body;
+    console.log(body)
+    res.end()
+    // // Prepared statement
+    // const prepStmt = 'SELECT (SUM(positive) / count(*) * 100.0) as positive_percent FROM rating GROUP BY fk_gameid HAVING fk_gameid=?;'
+    // // Run query
+    // db.query(prepStmt, gameid, (error, result, fields) => {
+    //     // Error Checking
+    //     if (error) {
+    //         // console.log(error)
+    //         return res.status(500).json(null).end();
+
+    //     } else {
+    //         // console.log(result)
+    //         return res.status(200).json(result).end();
+    //     }
+    // })
+})
+
+// API for submitting a rating to a game
+router.use('/rateGame', (req, res)=> {
+    // Get DB Connection Object
+    const db = getDb();
+    // Getting gameId from header
+    const gameid = req.params.gameId;
+    // Prepared statement
+    const prepStmt = 'SELECT (SUM(positive) / count(*) * 100.0) as positive_percent FROM rating GROUP BY fk_gameid HAVING fk_gameid=?;'
+    // Run query
+    db.query(prepStmt, gameid, (error, result, fields) => {
+        // Error Checking
+        if (error) {
+            // console.log(error)
+            return res.status(500).json(null).end();
+
+        } else {
+            // console.log(result)
+            return res.status(200).json(result).end();
+        }
+    })
+})
+
 module.exports = router
