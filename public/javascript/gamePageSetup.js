@@ -1,5 +1,14 @@
+window.onload = function () {
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  const game = urlParams.get("game");
+  // var scriptSrc = "javascript/" + game + ".js";
+  // document.getElementById("gamescript").setAttribute("src", scriptSrc);
+  setupGamePage(1);
+}
+
 function setupGamePage(gameid) {
-  var gameid = 1;
+  gameid = 1;
   // Define variables with place holder data
   var gameInfo = getGameInfo(gameid); // Assumes controller returns results as 2d array
   var top10Scores = getTop10Scores(gameid); // Assumes controller returns results as 2d array

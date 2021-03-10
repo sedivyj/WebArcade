@@ -49,6 +49,7 @@
       </table>
     </div>
     <div class="item3" id="gameDiv">
+      <!-- <object data="game.html"></object> -->
       <span id="game">
       </span>
     </div>
@@ -57,7 +58,19 @@
     </div>
   </div>
 </body>
+
 <script type="text/javascript" src="javascript/phaser.min.js"></script>
-<script type="text/javascript" src="javascript/FrogGame.js"></script>
+<script type="text/javascript" src="javascript/createGameScript.js"></script>
+<!-- <script id="gamescript" type="text/javascript" src=""></script> -->
+<!-- <script>
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  const game = urlParams.get("game");
+  var scriptSrc = "javascript/" + game + ".js";
+  var scriptTag = "<script id=\"gamescript\" type=\"text/javascript\" src=\"" + scriptSrc + "\"><" + "/script>";
+  document.writeln(scriptTag);
+</script> -->
+
+
 
 </html>
