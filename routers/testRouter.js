@@ -1,5 +1,7 @@
 // DEFINES ROUTES FOR {HOST}/test/* 
 // Used for testing
+const SQL_DB_GAME = require('../sql/gameController.js')
+
 const express = require('express')
 const path = require('path')
 const getDb = require('../db.js').getDb;
