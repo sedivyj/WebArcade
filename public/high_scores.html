@@ -46,22 +46,24 @@
   <img id="score" src="images/banner/High-Score-4k_trimmed.gif">
   </div>
 
-
-
-<div class = "test">
+  <!-- This could be automated using php or better -->
+  <div class = scoreBody>
+    <section class="counters">
+      <div class="container">
         <div class = "game">
-          <h3><a href="game_page.html">FROGGER</a></h3>
-          <a href="game_page.html">
-          <img src="images/thumbnail/froggerThumbNailjpg.jpg" alt="frogger" style="width:150px;height:150px;"></a>
+          <h3>FROGGER</h3>
+          <i class="fab fa-frogger fa-4x"></i>
+          <img src="images/thumbnail/froggerThumbNailjpg.jpg" alt="frogger" style="width:100px;height:100px;">
+          <!-- id should be same as game Name from database -->
           <div id="frogger_score" class="counter" data-target="150">0</div>
           <h4>SJF</h4>
         </div>
         <div class = "game">
           <h3>ASTEROIDS</h3>
           <i class="fab fa-twitter fa-4x"></i>
-          <img src="images/thumbnail/froggerThumbNailjpg.jpg" alt="frogger" style="width:150px;height:150px;">
-          <div class="counter" data-target="150">0</div>
-          <h4>JJS</h4>
+          <img src="images/thumbnail/froggerThumbNailjpg.jpg" alt="frogger" style="width:100px;height:100px;">
+          <div id="Asteroids" class="counter" data-target="150">0</div>
+          <h3>JJS</h3>
         </div>
         <div class = "game">
           <h3>TETRIS</h3>
