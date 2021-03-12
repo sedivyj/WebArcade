@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const port = require('./config').app.port
+const cookieParser = require('cookie-parser')
 
 // DB Module Functions
 const initDb = require('./db').initDb;
@@ -15,6 +16,7 @@ const testRouter = require('./routers/testRouter');
 
 // Setting up Middleware
 app.use(express.json()); // Middleware for handling JSON
+app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public'))); // Defining where static files will be found
 app.use('/game', gameRouter);
 app.use('/score', scoreRouter);
