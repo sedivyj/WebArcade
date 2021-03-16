@@ -73,6 +73,8 @@ router.use('/getShortDetails/:id', async (req, res) => {
   }
 })
 
+router.use('/getAllGames')
+
 router.use('/getTop10Scores/:id', async (req, res) => {
   const gameid = req.params.id
   if (gameid) {

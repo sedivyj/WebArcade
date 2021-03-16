@@ -28,6 +28,27 @@ function getGameDetails(id) {
   })
 }
 
+function getAllGameURLparams() {
+  // Get DB Connection Object
+  const db = getDb();
+
+  return new Promise((resolve, reject) => {
+    // Run query
+    const prepStmt = 'SELECT id, filename FROM game';
+    db.query(prepStmt, (error, result, fields) => {
+      if (error) {
+        console.log("ERROR getting all games");
+        return reject(error);
+      }
+      // Was the game found
+      if (!result) { return reject(new Error('Invalid id for game')) }
+
+      // Return the email and row data (without password) merged
+      return resolve(result)
+    })
+  })
+}
+
 function getAbridgedGameDetails(id) {
   // Get DB Connection Object
   const db = getDb();
