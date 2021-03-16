@@ -1,4 +1,5 @@
-window.onload = function () {
+var script = document.getElementById("gamescript");
+script.onload = function () {
   bootStrap();
 }
 

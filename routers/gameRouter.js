@@ -13,50 +13,79 @@ let router = express.Router()
 // router.use(express.static('public')) // Could be used for getting game assets
 
 // API for getting the high score for a game
-router.use('/getHighScore/:id', async (req, res)=> {
-    // Getting gameId from header
-    const gameid = req.params.id
-    // Prepared statement
+router.use('/getHighScore/:id', async (req, res) => {
+  // Getting gameId from header
+  const gameid = req.params.id
+  // Prepared statement
+  try {
+    const game = await SQL_DB_GAME.getGameHighScore(gameid)
+    // telling client-side that it is a JSON response and not reroute
+
+    return res.json(game);
+  } catch (err) {
+    return res.status(500).json({
+      error: true, message: 'Could not get game high score'
+    })
+  }
+})
+
+router.use('/getGame/:id?', async (req, res) => {
+  // Getting gameId from header
+  const gameid = req.params.id
+
+  if (gameid) {
     try {
-        const game = await SQL_DB_GAME.getGameHighScore(gameid)
-        // telling client-side that it is a JSON response and not reroute
-        
-        return res.json(game);
+      const game = await SQL_DB_GAME.getGameDetails(gameid)
+      // telling client-side that it is a JSON response and not reroute
+
+      return res.json(game);
     } catch (err) {
-        return res.status(500).json({
-            error: true, message: 'Could not get game high score'
-        })
+      return res.status(500).json({
+        error: true, message: 'Could not get game'
+      })
     }
+  } else { // TO-DO: return all games
+    try {
+      const game = await SQL_DB_GAME.getAllGames()
+      // telling client-side that it is a JSON response and not reroute
+
+      return res.json(game);
+    } catch (err) {
+      return res.status(500).json({
+        error: true, message: 'Could not get top score'
+      })
+    }
+  }
 })
 
-router.use('/getGame/:id?', async (req, res)=> {
-    // Getting gameId from header
-    const gameid = req.params.id
-
-    if (gameid) {
-        try {
-            const game = await SQL_DB_GAME.getGameDetails(gameid)
-            // telling client-side that it is a JSON response and not reroute
-            
-            return res.json(game);
-        } catch (err) {
-            return res.status(500).json({
-                error: true, message: 'Could not get game'
-            })
-        }
-    } else { // TO-DO: return all games
-        try {
-            const game = await SQL_DB_GAME.getAllGames()
-            // telling client-side that it is a JSON response and not reroute
-            
-            return res.json(game);
-        } catch (err) {
-            return res.status(500).json({
-                error: true, message: 'Could not get top score'
-            })
-        }
+router.use('/getShortDetails/:id', async (req, res) => {
+  const gameid = req.params.id
+  if (gameid) {
+    try {
+      const gameDetails = await SQL_DB_GAME.getAbridgedGameDetails(gameid);
+      return res.status(200).json(gameDetails).end()
+    } catch (err) {
+      console.log(err)
+      return res.status(500).json({
+        error: true, message: 'Error getting game details'
+      })
     }
+  }
 })
 
+router.use('/getTop10Scores/:id', async (req, res) => {
+  const gameid = req.params.id
+  if (gameid) {
+    try {
+      const gameDetails = await SQL_DB_GAME.getTop10GameScores(gameid);
+      return res.status(200).json(gameDetails).end()
+    } catch (err) {
+      console.log(err)
+      return res.status(500).json({
+        error: true, message: 'Error getting game scores'
+      })
+    }
+  }
+})
 
 module.exports = router
