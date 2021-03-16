@@ -3,6 +3,8 @@
 const express = require('express')
 const path = require('path')
 const getDb = require('../db.js').getDb;
+const SQL_DB_GAME = require('../sql/gameController.js')
+
 
 // Define the Router Object to export
 let router = express.Router()
@@ -11,29 +13,51 @@ let router = express.Router()
 // router.use(express.static('public')) // Could be used for getting game assets
 
 // API for getting the high score for a game
-router.use('/getHighScore', (req, res) => {
-    console.log("is this getting called?")
-    // Get DB Connection Object
-    const db = getDb();
+router.use('/getHighScore/:id', async (req, res)=> {
     // Getting gameId from header
-    const gameid = req.headers.gameid;
+    const gameid = req.params.id
     // Prepared statement
-    const prepStmt = 'SELECT score.* FROM score WHERE score = ( SELECT MAX(score) FROM score)'
-    // Run query
-    db.query(prepStmt, gameid, (error, result, fields) => {
-        // Error Checking
-        if (error) {
-            // How to handle err
-            res.json(null);
-
-        } else {
-            // Create JSON String and return
-            const gameJsonStr = JSON.stringify(result);
-            // telling client-side that it is a JSON response and not reroute
-            res.json(gameJsonStr);
-        }
-    })
+    try {
+        const game = await SQL_DB_GAME.getGameHighScore(gameid)
+        // telling client-side that it is a JSON response and not reroute
+        
+        return res.json(game);
+    } catch (err) {
+        return res.status(500).json({
+            error: true, message: 'Could not get game high score'
+        })
+    }
 })
+
+router.use('/getGame/:id?', async (req, res)=> {
+    // Getting gameId from header
+    const gameid = req.params.id
+
+    if (gameid) {
+        try {
+            const game = await SQL_DB_GAME.getGameDetails(gameid)
+            // telling client-side that it is a JSON response and not reroute
+            
+            return res.json(game);
+        } catch (err) {
+            return res.status(500).json({
+                error: true, message: 'Could not get game'
+            })
+        }
+    } else { // TO-DO: return all games
+        try {
+            const game = await SQL_DB_GAME.getAllGames()
+            // telling client-side that it is a JSON response and not reroute
+            
+            return res.json(game);
+        } catch (err) {
+            return res.status(500).json({
+                error: true, message: 'Could not get top score'
+            })
+        }
+    }
+})
+
 
 // API for getting overall positive rating of a game
 // Returns the overall positive rating and if the user
@@ -115,5 +139,6 @@ router.use('/rateGame', (req, res) => {
         return res.status(400).json("Body missing from request").end()
     }
 })
+
 
 module.exports = router

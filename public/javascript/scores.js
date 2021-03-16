@@ -1,29 +1,39 @@
-let score = $('#frogger_score');
-        // Function to run when the DOM is ready
-        $(() => { toExpress(); })
-        function toExpress() {
-            // FETCHING
-            console.log("Hi")
-            fetch(`/game/getHighScore`,
-            {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
-            .then(response => response.json()) // telling how to handle response
-            .then((data) => { // function for handling successful return
-                data = JSON.parse(data)
-                console.log(data[0].score)
-                score.attr('data-target',data[0].score)
-                console.log(score.attr('data-target'))
-                startScoreCount()
-            })
-            .catch(error => {
-              score.text(error)
-            }); // if bad call
-        }
 
+games = ['#frogger_score'] // replace with get games query
+id = [1]
+for (let i=0; i<games.length; i++ ) {
+  getHighScore(games[i], id[i])
+}
+
+function getHighScore(idName, id){
+  let score = $(idName);
+  // console.log(id)
+  // Function to run when the DOM is ready
+  $(() => { toExpress(); })
+  function toExpress() {
+      // FETCHING
+      fetch(`/score/getGameHighScore/${id}`,
+      {
+          method: 'GET',
+          headers: {
+              'Content-Type': 'application/json'
+          }
+      })
+      .then(response => response.json()) // telling how to handle response
+      .then((data) => { // function for handling successful return
+        // console.log(data)  
+        // data = JSON.parse(data)
+          // console.log(data[0].score)
+          score.attr('data-target',data[0].score)
+          // console.log(score.attr('data-target'))
+          startScoreCount()
+      })
+      .catch(error => {
+        score.text(error)
+        console.log("is this called?")
+      }); // if bad call
+  }
+}
 
 
 function startScoreCount(){
