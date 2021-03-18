@@ -47,6 +47,7 @@ router.use('/submitScore', (req, res) => {
         if(!initial || initial === '') {
             return res.status(400).json("No initials provided").end()
         }
+
         // Run Query
         db.query(prepStmt, [scoreid, gameid, score, initial], (error, result, fields) => {
             if (error) { 
