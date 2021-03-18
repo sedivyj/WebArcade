@@ -12,22 +12,18 @@
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/gamepage.css">
   <script type="text/javascript" src="javascript/gamePageSetup.js"></script>
+  <!-- React -->
+  <script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <script src="./javascript/navbar.js" type="text/babel"></script> 
 </head>
 
 <body>
-  <nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="index.html"><i>Capstone Web Arcade</i></a>
-      </div>
-      <ul class="nav navbar-nav">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="high_scores.html">High Scores</a></li>
-      </ul>
-    </div>
-  </nav>
+  <header>
+    <div id="navbar_container"></div>
+  </header>
+
   <div class="grid-container">
     <div class="item1">
       <h1 id="gameTitle"></h1>
