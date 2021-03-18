@@ -9,7 +9,7 @@
 
 /* Hide the images by default */
 .mySlidesG {
-  display: none;
+  display: block;
 }
 
 /* Next & previous buttons */
@@ -71,5 +71,4 @@
 .gameThumbNail{
     width:200px; 
     height:200px;
-
 }

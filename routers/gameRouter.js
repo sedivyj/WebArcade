@@ -73,7 +73,14 @@ router.use('/getShortDetails/:id', async (req, res) => {
   }
 })
 
-router.use('/getAllGames')
+router.use('/getAllGames/:id', async (req, res) => {
+  try {
+    const games = await SQL_DB_GAME.getAllGameURLparams(0);
+    return res.status(200).json(games).end();
+  } catch (err) {
+    return res.status(500).json({ error: true, message: 'Error getting games' })
+  }
+})
 
 router.use('/getTop10Scores/:id', async (req, res) => {
   const gameid = req.params.id

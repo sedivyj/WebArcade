@@ -9,6 +9,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script type="module" src="javascript/indexSetup.js"></script>
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/carousel.css">
   <link rel="stylesheet" href="css/gameCarousel.css">
@@ -76,34 +77,17 @@
         <div class="mySlidesG">
           <table style="width: 100%">
             <tr id="popGameRow">
-              <td>
-                <a href="game_page.html?id=2&game=AstroidsGame">
-                  <img class="gameThumbNail" src="images/thumbnail/pac_man_hed.jpg" alt="frogger">
-                </a>
-              </td>
-              <td>
-                <a href="game_page.html?id=1&game=FrogGame">
-                  <img class="gameThumbNail" src="images/thumbnail/froggerThumbNailjpg.jpg" alt="frogger">
-                </a>
-              </td>
-              <td>
-                <a href="game_page.html">
-                  <img class="gameThumbNail" src="images/thumbnail/froggerThumbNailjpg.jpg" alt="frogger">
-                </a>
-              </td>
+
             </tr>
           </table>
         </div>
-        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        <a class="prev">&#10094;</a>
+        <a class="next">&#10095;</a>
       </div>
       <br>
 
       <!-- The dots/circles -->
-      <div style="text-align:center">
-        <span class="dot" onclick="currentSlide(1)"></span>
-        <span class="dot" onclick="currentSlide(2)"></span>
-        <span class="dot" onclick="currentSlide(3)"></span>
+      <div id="dots" style="text-align:center">
       </div>
     </div>
 
