@@ -43,6 +43,8 @@ router.use('/submitScore', (req, res) => {
         const gameid = req.body.gameid
         const score = req.body.score
         const initial = req.body.initial
+
+        console.log(scoreid+", "+ gameid+", "+ score+", "+ initial)
         // Run Query
         db.query(prepStmt, [scoreid, gameid, score, initial], (error, result, fields) => {
             if (error) { 
