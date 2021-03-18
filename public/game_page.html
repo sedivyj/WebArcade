@@ -48,7 +48,13 @@
       <span id="game">
       </span>
     </div>
-    <div class="item4">
+    <!-- Rating Mechanic -->
+    <div class="item4 mt-4">
+      <button id="vote-down" class="btn mr-4">Hated!</button>
+      <span id="overall-rating" class="ml-4 mr-4">Loading</span>
+      <button id="vote-up" class="btn">Loved!</button>
+    </div>
+    <div class="item5">
       <h2 id="gameCreator"></h2>
     </div>
   </div>
@@ -56,4 +62,6 @@
 <script type="text/javascript" src="javascript/inGameLeaderboard.js"></script>
 <script type="text/javascript" src="gamejs/phaser.min.js"></script>
 <script id="gamescript" type="text/javascript" src="gamejs/FrogGame.js"></script>
+<script type="module" src="javascript/ratingButtons.js"></script>
+
 </html>

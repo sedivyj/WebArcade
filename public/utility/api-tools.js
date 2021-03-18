@@ -66,7 +66,7 @@ export async function getById(endpoint, id, cb_success, cb_error) {
 export async function postData(endpoint, data, cb_success, cb_error) {
     // Make the fetch and await the response
     const response = await fetch(endpoint, {
-        method: 'GET',
+        method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
