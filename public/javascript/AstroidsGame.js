@@ -459,7 +459,7 @@ function unpause(){
 
 // Game Over
 function gameOver () {
-    sendScore(score);
+    sendScore();
     game.paused = true;
     gameOver = game.add.sprite(game.world.width -775, game.world.height - 400, 'gameOver'); 
     restart_button = game.add.button(game.world.centerX - 110, 400, 'playAgain', restart, this, 2, 1, 0);
@@ -477,7 +477,7 @@ function sendScore() {
     postData = {
         'scoreid': null,
         'gameid': 2,
-        'score': txt_CurrentScoreValue,
+        'score': score,
         'initial': initials
     }
     // Make endpoint call
