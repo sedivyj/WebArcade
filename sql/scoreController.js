@@ -11,7 +11,7 @@ function getGameHighScore (id, limit) {
         db.query(prepStmt, [id, parseInt(limit)], (error, result,  fields) => {
             // Error Checking
             if (error) { 
-                console.log("is this where its breaking?")
+                console.log("breaking in getGameHighscore method in scoreController.")
                 console.log(error)
                 return reject(error) 
             }
