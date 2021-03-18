@@ -7,11 +7,19 @@
   margin: auto;
 }
 
-/* Hide the images by default */
-.mySlidesG {
-  display: none;
+.slideshow-containerA {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
 }
 
+/* Hide the images by default */
+.mySlidesG {
+ /* display: none;*/
+}
+.mySlidesA {
+  display: none;
+}
 /* Next & previous buttons */
 .prev, .next {
   cursor: pointer;
@@ -27,6 +35,7 @@
   border-radius: 0 3px 3px 0;
   user-select: none;
 }
+
 
 /* Position the "next button" to the right */
 .next {
