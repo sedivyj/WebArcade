@@ -12,8 +12,8 @@ router.use('/submitForm',(req,res)=>{
     const transporter = nodemailer.createTransport({
         service:'gmail',
         auth:{
-            user: 'tracen.vail@gmail.com',
-            pass: '1024#1616UWstout2'
+            user: process.env.EMAIL_USER,
+            pass: process.env.EMAIL_PASSWORD 
 
         }
 
@@ -21,7 +21,7 @@ router.use('/submitForm',(req,res)=>{
     console.log("made it")
     const mailOptions ={
         from: req.body.email,
-        to: 'tracen.vail@gmail.com',
+        to: process.env.EMAIL_USER,
         subject:`Message from ${req.body.email}: ${req.body.subject}`,
         text: req.body.message
     }
