@@ -2,17 +2,17 @@
 games = ['#frogger_score'] // replace with get games query
 id = [1]
 for (let i=0; i<games.length; i++ ) {
-  getHighScore(games[i], id[i])
+  getHighScore(games[i], id[i], 1)
 }
 
-function getHighScore(idName, id){
+function getHighScore(idName, id, limit){
   let score = $(idName);
   // console.log(id)
   // Function to run when the DOM is ready
   $(() => { toExpress(); })
   function toExpress() {
       // FETCHING
-      fetch(`/score/getGameHighScore/${id}`,
+      fetch(`/score/getGameHighScore/id/${id}/show/${limit}`,
       {
           method: 'GET',
           headers: {
