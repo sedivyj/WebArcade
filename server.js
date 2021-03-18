@@ -1,7 +1,8 @@
 const express = require('express');
 const path = require('path');
-const port = require('./config').app.port
 const cookieParser = require('cookie-parser')
+
+const port = require('./config')?.app?.port
 
 // DB Module Functions
 const initDb = require('./db').initDb;
@@ -27,7 +28,6 @@ initDb((err) => {
     app.listen(port, (err) => {
         try {
             if (err) throw err;
-            console.log(`Environment: ${process.env.NODE_ENV}`);
             console.log(`Server is listening on port ${port}`);
         }
         catch (err) {
