@@ -10,6 +10,18 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="css/styles.css">
+  <style>
+    *{margin: 0;padding: 0;box-sizing: border-box;  }
+    html,
+    body{background-color: black;}
+    .form-container{position: relative;left: 20%;width:60%;height:100vh;background-color: #ffffff;}
+    .contact-form{position: absolute; top:10%; left:10%; width:80% ;height: 600px;}
+    input,
+    textarea {width:100%; margin-top: 2rem; border:none; border-bottom: 1px solid black;}
+    .submit{border: 1px solid black; padding:1rem; text-align:center;background-color:#ffffff;cursor:pointer;}
+    .submit:hover{opacity:0.6;}
+
+</style>
 
 </head>
 
@@ -38,7 +50,19 @@
 </nav>
   <img id="bannerHome" src="images/banner/tetris_banner.png" alt="Chania" width="100%" height="350px">
 
-  <h1><br><br><br>Contact Page</h1>
+  <h1><br>Email-US</h1>
 </body>
 
+<div class="form-container">
+  <form class = "contact-form">
+      <h2>CONTACT</h2>
+      <input type='text' id ='name' placeholder="Full Name"><br>
+      <input type='email' id ='email' placeholder="Email"><br>
+      <input type='text' id ='subject' placeholder="Subject"><br>
+      <textarea id = "message" placeholder= "message" cols="30" rows="10"></textarea><br>
+      <input type ="submit" class="submit" value="send message">
+
+  </form>
+</div>
+<script src ="javascript/emailApp.js"></script>
 </html>
