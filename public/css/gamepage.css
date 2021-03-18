@@ -74,3 +74,20 @@ td.score{
   display: table;
   margin: 0 auto;
 }
+
+/* For Rating Buttons */
+#vote-down {
+  background-color: lightcoral;
+}
+
+#vote-down:hover {
+  background-color: red;
+}
+
+#vote-up {
+  background-color: lightgreen;
+}
+
+#vote-up:hover {
+  background-color: green;
+}
