@@ -14,32 +14,17 @@
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" type="text/css" href="css/scores.css">
 
-  
-  
+  <!-- React -->
+  <script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <script src="./javascript/navbar.js" type="text/babel"></script> 
 </head>
 
 <body>
-
-<nav class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container-fluid">
-              <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-                <a class="navbar-brand" href="index.html"><i>Capstone Web Arcade</i></a>
-              </div>
-              <div class="collapse navbar-collapse" id="myNavbar">
-              <ul class="nav navbar-nav">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="high_scores.html">High Scores</a></li>
-              </ul>
-              </div>
-  </div>
-</nav>
+  <header>
+    <div id="navbar_container"></div>
+  </header>
 
   <div class="hspage">
   <div class = "hsbanner">
