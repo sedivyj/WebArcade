@@ -1,13 +1,13 @@
 import React from 'react';
 import '../../App.css';
-import highScore from '../highScore';
+import HighScoretest from '../HighScoretest';
 
 
 
 function Home () {
     return (
         <>
-        <highScore />
+        <HighScoretest />
         </>
     );
 }

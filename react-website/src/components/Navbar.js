@@ -47,7 +47,7 @@ function Navbar() {
                             </Link>
                         </li>
                         <li className='nav-item'>
-                            <Link to='./high_scores.html' className='nav-links' onClick={closeMobileMenu}>
+                            <Link to='/leaderboard' className='nav-links' onClick={closeMobileMenu}>
                                 High Scores
                             </Link>
                         </li>
