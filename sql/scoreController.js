@@ -35,7 +35,6 @@ function getGameLeaderboard (id) {
         db.query(prepStmt, id, (error, result, fields) => {
             // Error Checking
             if (error) { 
-                console.log("is this where its breaking?")
                 return reject(error) 
             }
             // Was the game found
