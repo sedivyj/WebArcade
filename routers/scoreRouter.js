@@ -42,6 +42,10 @@ router.use('/submitScore', (req, res) => {
         const gameid = req.body.gameid
         const score = req.body.score
         const initial = req.body.initial
+
+        if(!initial || initial === '') {
+            return res.status(400).json("No initials provided").end()
+        }
         // Run Query
         db.query(prepStmt, [scoreid, gameid, score, initial], (error, result, fields) => {
             if (error) { 
