@@ -1,0 +1,50 @@
+{
+  "anims": [
+    {
+      "key": "drawCrossCube",
+      "type": "frame",
+      "frames": [
+        {
+          "key": "crossCube",
+          "frame": 0,
+          "duration": 0
+        },
+        {
+          "key": "crossCube",
+          "frame": 1,
+          "duration": 0
+        },
+        {
+          "key": "crossCube",
+          "frame": 2,
+          "duration": 0
+        },
+        {
+          "key": "crossCube",
+          "frame": 3,
+          "duration": 0
+        },
+        {
+          "key": "crossCube",
+          "frame": 4,
+          "duration": 0
+        },
+        {
+          "key": "crossCube",
+          "frame": 5,
+          "duration": 0
+        }
+      ],
+      "frameRate": 25,
+      "duration": 0,
+      "skipMissedFrames": true,
+      "delay": 0,
+      "repeat": 0,
+      "repeatDelay": 0,
+      "yoyo": false,
+      "showOnStart": false,
+      "hideOnComplete": false
+    }
+  ],
+  "globalTimeScale": 1
+}
