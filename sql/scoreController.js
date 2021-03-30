@@ -23,5 +23,4 @@ function getGameHighScore (id, limit) {
     })
 }
 
-
 module.exports = {getGameHighScore}

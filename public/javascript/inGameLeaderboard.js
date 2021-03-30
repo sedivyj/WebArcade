@@ -24,8 +24,7 @@ function getLeaderboard(idName, id, limit){
         for (score in data) {
             console.log(score)
             addScoreToLeaderboard(data[score], rank)
-            rank+=1
-            
+            rank+=1    
         }
         
       })
