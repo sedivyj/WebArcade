@@ -11,23 +11,19 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="css/styles.css">
   <link rel="stylesheet" href="css/gamepage.css">
-  <script type="module" src="javascript/gamePageSetup.js"></script>
+  <script type="text/javascript" src="javascript/gamePageSetup.js"></script>
+  <!-- React -->
+  <script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <script src="./javascript/navbar.js" type="text/babel"></script>
 </head>
 
 <body>
-  <nav class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="index.html"><i>Capstone Web Arcade</i></a>
-      </div>
-      <ul class="nav navbar-nav">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="high_scores.html">High Scores</a></li>
-      </ul>
-    </div>
-  </nav>
+  <header>
+    <div id="navbar_container"></div>
+  </header>
+
   <div class="grid-container">
     <div class="item1">
       <h1 id="gameTitle"></h1>
@@ -49,26 +45,23 @@
       </table>
     </div>
     <div class="item3" id="gameDiv">
-      <!-- <object data="game.html"></object> -->
       <span id="game">
       </span>
     </div>
-    <div class="item4">
+    <!-- Rating Mechanic -->
+    <div class="item4 mt-4">
+      <button id="vote-down" class="btn mr-4">Hated!</button>
+      <span id="overall-rating" class="ml-4 mr-4">Loading</span>
+      <button id="vote-up" class="btn">Loved!</button>
+    </div>
+    <div class="item5">
       <h2 id="gameCreator"></h2>
     </div>
   </div>
 </body>
-
+<script type="text/javascript" src="javascript/inGameLeaderboard.js"></script>
 <script type="text/javascript" src="gamejs/phaser.min.js"></script>
-<script type="text/javascript" src="javascript/createGameScript.js"></script>
-<!-- <script id="gamescript" type="text/javascript" src=""></script> -->
-<!-- <script>
-  const queryString = window.location.search;
-  const urlParams = new URLSearchParams(queryString);
-  const game = urlParams.get("game");
-  var scriptSrc = "javascript/" + game + ".js";
-  var scriptTag = "<script id=\"gamescript\" type=\"text/javascript\" src=\"" + scriptSrc + "\"><" + "/script>";
-  document.writeln(scriptTag);
-</script> -->
+<script id="gamescript" type="text/javascript" src="gamejs/FrogGame.js"></script>
+<script type="module" src="javascript/ratingButtons.js"></script>
 
 </html>

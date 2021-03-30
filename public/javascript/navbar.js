@@ -29,8 +29,8 @@ class NavBar extends React.Component {
             </ul>
           </div>
 
-        </div>
-      </nav>
+        //     </div>
+        // </nav>
     );
   }
 }

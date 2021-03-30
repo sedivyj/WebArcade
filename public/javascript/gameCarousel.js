@@ -12,7 +12,7 @@ function currentSlide(n) {
   showSlides(slideIndex = n);
 }
 
-function showSlides(n) {
+function showSlidesA(n) {
   var i;
   var slides = document.getElementsByClassName("mySlidesG");
   var dots = document.getElementsByClassName("dot");

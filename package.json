@@ -4,12 +4,16 @@
   "description": "",
   "main": "server.js",
   "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-react-app": "^3.1.2",
+    "cookie-parser": "^1.4.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "mysql": "^2.18.1",
-    "nodemon": "^2.0.7"
+    "nodemailer": "^6.5.0",
+    "nodemon": "^2.0.7",
+    "react": "^17.0.1"
   },
-  "devDependencies": {},
   "scripts": {
     "start": "nodemon server.js"
   },
