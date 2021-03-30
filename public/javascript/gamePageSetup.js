@@ -27,7 +27,7 @@ function updateTop10ScoresAPI() {
 
 function setupGamePage() {
   // Get then set the game info
-  getById('/game/getShortDetails', id, setGameDetails,
+  getById('/game/getGame', id, setGameDetails,
     () => console.log("ERROR getting game info"));
   // Get then create leaderboard
   getById('/game/getTop10Scores', id, setTop10Scores,
