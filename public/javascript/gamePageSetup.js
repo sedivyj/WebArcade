@@ -55,6 +55,7 @@ function updateTop10Scores(scores) {
 
 function setGameDetails(gameInfo) {
   //console.log(gameInfo)
+  $("title:first").text(gameInfo[0].title);
   $("#gameTitle").text(gameInfo[0].title);
   $("#gameCreator").text("Made by: " + gameInfo[0].creator);
 }

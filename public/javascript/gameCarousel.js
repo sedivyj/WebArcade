@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 var slideIndex = 1;
 showSlides(slideIndex);
 
@@ -26,3 +27,30 @@ function showSlides(n) {
   slides[slideIndex-1].style.display = "block";
   dots[slideIndex-1].className += " active";
 }
+=======
+// Next/previous controls
+$(".prev").click(function () {
+  $("#popGameRow > .gameLink:last").after($("#popGameRow > .gameLink:first"));
+});
+
+$(".next").click(function () {
+  $("#popGameRow > .gameLink:first").before($("#popGameRow > .gameLink:last"));
+});
+
+// // Thumbnail image controls
+// function currentSlide(n) {
+//   var index = $("td#" + n + ".gameLink").index();
+//   console.log(index);
+// }
+
+// $(".dot").click(function () {
+//   var index = $(this).index();
+
+// });
+
+// function showSlides(n) {
+//   var prev = $("td.gameLink:lt(" + n + ")");
+//   $("td.gameLink:last").after(prev);
+
+// }
+>>>>>>> Stashed changes
