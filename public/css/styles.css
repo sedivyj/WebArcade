@@ -1,6 +1,7 @@
 body{
     background-color: black;
     overflow-y: scroll;
+    padding-top: 65px;
 }
 
 #bannerHome{

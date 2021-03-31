@@ -1,181 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <title>web arcade</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <head>
+    <title>web arcade</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-  <link rel="stylesheet" href="css/styles.css">
-  <link rel="stylesheet" href="css/carousel.css">
-  <link rel="stylesheet" href="css/gameCarousel.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/carousel.css">
+    <link rel="stylesheet" href="css/gameCarousel.css">
+  </head>
 
-  <!-- React -->
-  <script src="https://unpkg.com/react@17/umd/react.production.min.js" crossorigin></script>
-  <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" crossorigin></script>
-  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
-  <script src="./javascript/navbar.js" type="text/babel"></script> 
-</head>
-
-<body>
-  <header>
-    <div id="navbar_container"></div>
-  </header>
-
-  <div class="slideshow-container">
-
-
-    <!-- Full-width images with number and caption text -->
-    <div class="mySlides">
-      <img src="images/banner/asteroids_banner.jpg" style="width:100%" height="350px">
-    </div>
-
-    <div class="mySlides">
-
-      <img src="images/banner/frogger_banner_two.jpg" style="width:100%" height="350px">
-    </div>
-
-    <div class="mySlides">
-      <img src="images/banner/tetris_banner.png" style="width:100%" height="350px">
-    </div>
-    <br>
-    <div style="text-align:center">
-      <span class="dotb" onclick="currentSlide(1)"></span>
-      <span class="dotb" onclick="currentSlide(2)"></span>
-      <span class="dotb" onclick="currentSlide(3)"></span>
-    </div>
-    <div>
-      <div>
-        <img src="images/capstone.png">
-      </div>
-      <div><i>
-          <h1 style="text-align: left;">Capstone Gaming Presents</h1>
-        </i></div>
-    </div>
-
-    <div class="gameContainer" id="popGames">
-      <h1>Popular Games</h1>
-      <div class="slideshow-containerG">
-        <div class="mySlidesG">
-          <table style="width: 100%">
-            <tr>
-              <td>
-                <a href="game_page.html" onclick="setupGamePage(2)">
-                  <img class="gameThumbNail" src="images/thumbnail/pac_man_hed.jpg" alt="frogger">
-                </a>
-              </td>
-              <td>
-                <a href="game_page.html" onclick="setupGamePage(1)">
-                  <img class="gameThumbNail" src="images/thumbnail/froggerThumbNailjpg.jpg" alt="frogger">
-                </a>
-              </td>
-              <td>
-                <a href="./tic-tac-toe/">
-                  <img class="gameThumbNail" src="images/thumbnail/tic_tac_toe-512.webp" alt="tic tac toe">
-                </a>
-                            </td>
-            </tr>
-          </table>
-        </div>
-
- 
-        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-        <a class="next" onclick="plusSlides(1)">&#10095;</a>
-      </div>
-      <br>
-
-      <!-- The dots/circles -->
-      <div style="text-align:center">
-        <span class="dot" onclick="currentSlide(1)"></span>
-        <span class="dot" onclick="currentSlide(2)"></span>
-        <span class="dot" onclick="currentSlide(3)"></span>
-      </div>
-    </div>
-    <div class="gameContainerA" id="AGames">
-      <h1>All Games</h1>
-      <div class="slideshow-containerA">
-        <div class="mySlidesA">
-          <table style="width: 100%">
-            <tr>
-              <td>
-                <a href="game_page.html" onclick="setupGamePage(2)">
-                  <img class="gameThumbNail" src="images/thumbnail/pac_man_hed.jpg" alt="frogger">
-                </a>
-              </td>
-              <td>
-                <a href="game_page.html" onclick="setupGamePage(1)">
-                  <img class="gameThumbNail" src="images/thumbnail/froggerThumbNailjpg.jpg" alt="frogger">
-                </a>
-              </td>
-              <td>
-                <a href="game_page.html">
-                  <img class="gameThumbNail" src="images/thumbnail/froggerThumbNailjpg.jpg" alt="frogger">
-                </a>
-              </td>
-            </tr>
-          </table>
-        </div>
-        <div class="mySlidesA">
-          <table style="width: 100%">
-            <tr>
-              <td>
-                <a href="game_page.html">
-                  <img class="gameThumbNail" src="images/thumbnail/froggerThumbNailjpg.jpg" alt="frogger">
-                </a>
-              </td>
-              <td>
-                <a href="./tic-tac-toe/">
-                  <img class="gameThumbNail" src="images/thumbnail/tic_tac_toe-512.webp" alt="tic tac toe">
-                </a>
-              </td>
-              <td>
-                <a href="game_page.html">
-                  <img class="gameThumbNail" src="images/thumbnail/pac_man_hed.jpg" alt="pac man">
-                </a>
-              </td>
-            </tr>
-          </table>
-        </div>
-        <div class="mySlidesA">
-          <table style="width: 100%">
-            <tr>
-              <td>
-                <a href="game_page.html">
-                  <img class="gameThumbNail" src="images/thumbnail/froggerThumbNailjpg.jpg" alt="frogger">
-                </a>
-              </td>
-              <td>
-                <a href="game_page.html">
-                  <img class="gameThumbNail" src="images/thumbnail/pac_man_hed.jpg" alt="pac man">
-                </a>
-              </td>
-              <td>
-                <a href="./tic-tac-toe/">
-                  <img class="gameThumbNail" src="images/thumbnail/tic_tac_toe-512.webp" alt="tic tac toe">
-                </a>
-              </td>
-            </tr>
-          </table>
-        </div>
-        <a class="prev" onclick="plusSlidesA(-1)">&#10094;</a>
-        <a class="next" onclick="plusSlidesA(1)">&#10095;</a>
-      </div>
-      <br>
-
-      <!-- The dots/circles -->
-      <div style="text-align:center">
-        <span class="dot" onclick="currentSlideA(1)"></span>
-        <span class="dot" onclick="currentSlideA(2)"></span>
-        <span class="dot" onclick="currentSlideA(3)"></span>
-      </div>
-    </div>
-    <script src="javascript/carousel.js"></script>
-    <script src="javascript/gameCarousel.js"></script>
-    <script src="javascript/aGamecarousel.js"></script>
-</body>
-
+  <body>
+    <div id="root"></div>
+    <script src="bundle.js"></script>
+  </body>
 </html>

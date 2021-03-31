@@ -1,5 +1,5 @@
 const mysql = require('mysql'); // Driver for connecting to DB
-const db_config = require('./config.js')?.db;
+const db_config = require('./config')?.db;
 const assert = require("assert");
 
 let _db; // Database connection object

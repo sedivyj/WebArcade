@@ -18,7 +18,7 @@ const emailRouter = require('./routers/emailRouter');
 // Setting up Middleware
 app.use(express.json()); // Middleware for handling JSON
 app.use(cookieParser())
-app.use(express.static(path.join(__dirname, 'public'))); // Defining where static files will be found
+app.use(express.static(path.join(__dirname, '../public'))); // Defining where static files will be found
 app.use('/game', gameRouter);
 app.use('/score', scoreRouter);
 app.use('/test', testRouter);
