@@ -1,0 +1,8 @@
+/* You can add global styles to this file, and also import other style files */
+html, body {
+  margin: 0;
+  background: -webkit-radial-gradient(circle, darkgrey 0%, #202020 100%);
+  height: 100%;
+}
+
+/*# sourceMappingURL=styles.css.map*/
