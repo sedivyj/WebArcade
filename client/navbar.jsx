@@ -8,7 +8,12 @@ export default class NavBar extends Component {
 
   render() {
     return (
-      <nav className="navbar navbar-inverse navbar-fixed-top">
+      <nav className="navbar navbar-inverse navbar-fixed-top fadable-navbar"
+      style={{ 
+        visibility: (this.props.isPlaying) ? 'hidden': 'visible',
+        opacity:  (this.props.isPlaying) ? 0 : 100
+      }}
+      >
         <div className="container-fluid">
             <div className="navbar-header">
                 <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
