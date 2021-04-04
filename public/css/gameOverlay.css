@@ -10,6 +10,14 @@
   transition: 0.5s;
 }
 
-.closeIcon {
-  fill: "#fff"
+.closeButton {
+  background-color: transparent;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+  outline: none;
+  color: white;
+  font-size: large;
+  font-weight: bold;
 }

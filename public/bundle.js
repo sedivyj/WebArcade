@@ -20464,7 +20464,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
     }
     render() {
       return /* @__PURE__ */ import_react.default.createElement("nav", {
-        className: "navbar navbar-inverse navbar-fixed-top",
+        className: "navbar navbar-inverse navbar-fixed-top fadable-navbar",
         style: {
           visibility: this.props.isPlaying ? "hidden" : "visible",
           opacity: this.props.isPlaying ? 0 : 100
@@ -20518,9 +20518,10 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
           visibility: this.props.isPlaying ? "visible" : "hidden",
           opacity: this.props.isPlaying ? 100 : 0
         }
-      }, /* @__PURE__ */ import_react2.default.createElement("h1", null, "Game Overlay Exists!"), /* @__PURE__ */ import_react2.default.createElement("button", {
+      }, /* @__PURE__ */ import_react2.default.createElement("button", {
+        className: "closeButton mt-4",
         onClick: this.props.closeOverlay
-      }, "Close"));
+      }, "X"), /* @__PURE__ */ import_react2.default.createElement("h1", null, "Game Overlay Exists!"));
     }
   };
   var gameOverlay_default = GameOverlay;
@@ -20537,11 +20538,9 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
       this.closeOverlay = this.closeOverlay.bind(this);
     }
     openOverlay() {
-      console.log("OPENING IN APP");
       this.setState({isPlaying: true});
     }
     closeOverlay() {
-      console.log("CLOSING");
       this.setState({isPlaying: false});
     }
     render() {

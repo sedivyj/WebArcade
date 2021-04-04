@@ -13,8 +13,10 @@ export default class GameOverlay extends Component {
         opacity:  (this.props.isPlaying) ? 100 : 0
       }}
       >
+        <button className="closeButton mt-4" onClick={this.props.closeOverlay}>
+          X
+        </button>
         <h1>Game Overlay Exists!</h1>
-        <button onClick={this.props.closeOverlay}>Close</button>
       </div>
     )
   }
