@@ -88,3 +88,7 @@ a:link {
     background-color: transparent;
     text-decoration: none;
   }
+
+  td.gameLink {
+    text-align: center;
+  }

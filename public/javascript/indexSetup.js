@@ -21,14 +21,4 @@ function loadGames(games) {
     // var dot = $("<span></span>").attr({ "class": "dot", "onclick": "currentSlide(" + i + ")" });
     // $("#dots").append(dot);
   }
-  // TODO: remove the below code as it is only there for demonstration purposes
-  var thumbsrc = "images/thumbnail/PacManGameThumbnail.jpg";
-  var img = $("<img>").attr({ "class": "gameThumbNail", "src": thumbsrc, "alt": games[1].title });
-  var lnkhref = "game_page.html?id=" + games[1].gameid + "&game=" + games[1].filename;
-  var lnk = $("<a></a>").attr({ "href": lnkhref, "title": "Play " + games[1].title + "!" }).append(img);
-  var td = $("<td></td>").attr({ "id": 2, "class": "gameLink" }).append(lnk);
-  $("#popGameRow").append(td);
-  // var dot = $("<span></span>").attr({ "class": "dot", "onclick": "currentSlide(" + 2 + ")" });
-  // $("#dots").append(dot);
-  // $("#dots > .dot:first").next().toggleClass("active");
 }
