@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import RatingButton from './ratingButton.js'
+import RatingButton from './ratingButton.jsx'
 import { getById, postData } from '../utility/api-tools'
 
 export default class RatingComponent extends Component {
