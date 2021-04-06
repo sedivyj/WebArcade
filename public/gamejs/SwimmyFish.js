@@ -10,8 +10,8 @@ var mainState = {
         game.scale.pageAlignHorizontally = true;
         game.scale.pageAlignVertically = true;
         game.stage.backgroundColor = '#1350d4';
-        game.load.image('fish', 'fish.png');  
-        game.load.image('seaweed', 'seaweed.png'); 
+        game.load.image('fish', 'images/SwimmyFish/fish.png');  
+        game.load.image('seaweed', 'images/SwimmyFish/seaweed.png'); 
     },
 
     create: function() { 
