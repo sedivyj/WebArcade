@@ -23,12 +23,12 @@ export default class RatingButton extends Component {
     postData('/game/rateGame', ratingData, this.voteSuccess, this.voteFail)
   }
 
-  voteSuccess() {
-    alert('SUCCESS')
+  voteSuccess(response) {
+    alert(`SUCCESS: ${response}`)
   }
 
-  voteFail() {
-    alert('FAIL')
+  voteFail(err) {
+    alert(`ERROR: ${err}`)
   }
 
   render() {

@@ -20548,11 +20548,11 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
       };
       postData("/game/rateGame", ratingData, this.voteSuccess, this.voteFail);
     }
-    voteSuccess() {
-      alert("SUCCESS");
+    voteSuccess(response) {
+      alert(`SUCCESS: ${response}`);
     }
-    voteFail() {
-      alert("FAIL");
+    voteFail(err) {
+      alert(`ERROR: ${err}`);
     }
     render() {
       const cssId = this.props.isPositive ? "vote-up" : "vote-down";
