@@ -25,7 +25,7 @@ export default class RatingComponent extends Component {
     const percentageColor = this.positivePercentageColor()
     return(
       <div>
-        <RatingButton isPositve={ false }/>
+        <RatingButton isPositive={ false }/>
           <span style={{ color: percentageColor }}>{this.props.positivePercentage}%</span>
         <RatingButton isPositive={ true }/>
       </div>

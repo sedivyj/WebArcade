@@ -20540,26 +20540,28 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
     constructor(props) {
       super(props);
     }
-    vote(isPositve) {
-      console.log(isPositve);
+    vote(isPositive) {
+      console.log(isPositive);
       const ratingData = {
         gameId: 1,
-        positive: isPositve
+        positive: isPositive
       };
       postData("/game/rateGame", ratingData, this.voteSuccess, this.voteFail);
     }
     voteSuccess(response) {
+      console.log(response);
       alert(`SUCCESS: ${response}`);
     }
     voteFail(err) {
-      alert(`ERROR: ${err}`);
+      console.log(err.toString());
+      alert(`ERROR: ${err.message}`);
     }
     render() {
       const cssId = this.props.isPositive ? "vote-up" : "vote-down";
       const label = this.props.isPositive ? "Loved!" : "Hated!";
       return /* @__PURE__ */ import_react2.default.createElement("button", {
         id: cssId,
-        onClick: () => this.vote(this.props.isPositve)
+        onClick: () => this.vote(this.props.isPositive)
       }, label);
     }
   };
@@ -20585,7 +20587,7 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
     render() {
       const percentageColor = this.positivePercentageColor();
       return /* @__PURE__ */ import_react3.default.createElement("div", null, /* @__PURE__ */ import_react3.default.createElement(ratingButton_default, {
-        isPositve: false
+        isPositive: false
       }), /* @__PURE__ */ import_react3.default.createElement("span", {
         style: {color: percentageColor}
       }, this.props.positivePercentage, "%"), /* @__PURE__ */ import_react3.default.createElement(ratingButton_default, {
