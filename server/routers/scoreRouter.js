@@ -29,10 +29,18 @@ router.use('/submitScore', async (req, res) => {
     // Check for Body
     if(req.body) {
         // Get data from body
-        const gameid = req.body.gameid
-        const score = req.body.score
+        const gameid = parseInt(req.body.gameid)
+        const score = Number(req.body.score) // Could be int or float type
         const initial = req.body.initial
 
+        if(!gameid) {
+            const err = { error: 'Invalid game id' }
+            return res.status(400).json(err)
+        }
+        if(!score) {
+            const err = { error: 'Score is not a number' }
+            return res.status(400).json(err)
+        }
         if(!initial || initial === '') {
             const err = { error: 'No initials provided' }
             return res.status(400).json(err)
