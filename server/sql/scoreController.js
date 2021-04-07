@@ -1,6 +1,12 @@
 // DB Module Functions
 const getDb = require('../db').getDb;
 
+/**
+ * 
+ * @param {number} id 
+ * @param {number} limit 
+ * @returns 
+ */
 function getGameHighScore (id, limit) {
     const db = getDb();
 
@@ -23,5 +29,34 @@ function getGameHighScore (id, limit) {
     })
 }
 
+/**
+ * Function for submitting a score to the Score table in the DB
+ * @param {number} gameid 
+ * @param {number} score 
+ * @param {string} initial 
+ * @returns promise
+ */
+function submitScore (gameid, score, initial) {
+    const db = getDb()
 
-module.exports = {getGameHighScore}
+    return new Promise((resolve, reject) => {
+        const prepStmt = 'INSERT INTO score (scoreid, fk_gameid, score, initial) VALUES (?, ?, ?, ?)'
+        const scoreid = null // will always be null for new score inserts
+        // Run query
+        db.query(prepStmt, [scoreid, gameid, score, initial], (error, result, fields) => {
+            if (error) { 
+                console.log("breaking in getGameHighscore method in scoreController.")
+                console.log(error)
+                return reject(error)
+            }
+            else {
+                return resolve(result)
+            }
+        })
+    })
+}
+
+module.exports = { 
+    getGameHighScore,
+    submitScore
+}
