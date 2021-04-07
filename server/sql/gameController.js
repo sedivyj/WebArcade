@@ -39,7 +39,7 @@ function getOverallRating (gameId) {
     return new Promise((resolve, reject) => {
         const prepStmt = 'SELECT (SUM(positive) / count(*) * 100.0) as positive_percent FROM rating GROUP BY fk_gameid HAVING fk_gameid=?;'
 
-        db.query(prepStmt, gameid, (error, result, fields) => {
+        db.query(prepStmt, gameId, (error, result, fields) => {
             if (error) {
                 console.log('breaking in getOverallRating method in gameController.')
                 reject(error)
