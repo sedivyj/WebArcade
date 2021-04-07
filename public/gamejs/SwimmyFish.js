@@ -1,3 +1,5 @@
+import { postData } from '../javascript/utility/api-tools.js';
+
 var game = new Phaser.Game(700, 490, Phaser.AUTO, "gameDiv");
 var mainState = {
 
@@ -20,7 +22,7 @@ var mainState = {
         this.clock = game.time.events.loop(1500, this.addRowOfSeaweeds, this);           
         this.fish = game.add.sprite(200, 50, 'fish');
         game.physics.arcade.enable(this.fish);
-        this.fish.body.gravity.y = 0000; 
+        this.fish.body.gravity.y = 0; 
         var spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
         spaceKey.onDown.add(this.spaceAction, this); 
         
@@ -114,6 +116,23 @@ var mainState = {
         var initials = prompt("Please enter your initials");
    
         //TODO: Send Score Code
+        // Format Data
+        const scoreData = {
+            'scoreid': null,
+            'gameid': 3,
+            'score': this.score,
+            'initial': initials
+        }
+        // Submit the score
+        postData('/score/submitScore', scoreData, this.submitSuccess, this.submitFailed)
+    },
+
+    submitSuccess: function(response) {
+        window.alert(response.message)
+    },
+
+    submitFailed: function(err) {
+        window.alert(err.error)
     }
 };
 

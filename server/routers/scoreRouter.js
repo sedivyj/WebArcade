@@ -45,21 +45,26 @@ router.use('/submitScore', (req, res) => {
         const initial = req.body.initial
 
         if(!initial || initial === '') {
-            return res.status(400).json("No initials provided").end()
+            const err = { error: 'No initials provided' }
+            return res.status(400).json(err)
         }
 
         // Run Query
         db.query(prepStmt, [scoreid, gameid, score, initial], (error, result, fields) => {
             if (error) { 
-                console.log(error)
-                res.status(500).end(); // Server error
+                const err = { error: 'There was an issue submitting your score' }
+                return res.status(500).json(err); // Server error
             }
             else {
                 console.log(`New SCOREID: ${result.insertId}`)
-                res.status(200).end() // success
+                const response = { message: `Your score was submitted ${initial}!` }
+                return res.status(200).json(response) // success
             }
         })
     } else {
+        const err = {
+            error: 'Bad Request'
+        }
         res.status(500).end()
     }
 })
