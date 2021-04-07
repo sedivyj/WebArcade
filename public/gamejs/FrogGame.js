@@ -1,7 +1,7 @@
-// var script = document.getElementById("gamescript");
-// script.onload = function () {
-//   bootStrap();
-// }
+var script = document.getElementById("gamescript");
+script.onload = function () {
+  bootStrap();
+}
 
 function bootStrap() {
   console.log("showing");

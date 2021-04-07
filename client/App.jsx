@@ -7,7 +7,7 @@ import GameOverlay from './game/gameOverlay.jsx'
 export default class App extends Component {
   constructor(props) {
     super(props)
-    this.state = { 
+    this.state = {
       gameData: '',
       isPlaying: false
     }
@@ -17,11 +17,11 @@ export default class App extends Component {
     this.closeOverlay = this.closeOverlay.bind(this);
   }
 
-  openOverlay () {
+  openOverlay() {
     this.setState({ isPlaying: true })
   }
 
-  closeOverlay () {
+  closeOverlay() {
     this.setState({ isPlaying: false })
   }
 
@@ -45,21 +45,21 @@ export default class App extends Component {
     return (
       <div className="App">
         <NavBar
-          isPlaying = { this.state.isPlaying } 
+          isPlaying={this.state.isPlaying}
         />
-        <GameOverlay 
-        isPlaying = { this.state.isPlaying } 
-        closeOverlay = { this.closeOverlay }
+        <GameOverlay
+          isPlaying={this.state.isPlaying}
+          closeOverlay={this.closeOverlay}
         />
         <div className="text-center">
           <h1>Sorry!</h1>
-          <p style={{color:'white'}}>
-            This website is currently under construction. We are working hard to create a better 
+          <p style={{ color: 'white' }}>
+            This website is currently under construction. We are working hard to create a better
             experience for you all. Thank you for your patience! :)
-            <br/>-Web Arcade Dev Team
+            <br />-Web Arcade Dev Team
           </p>
           <button onClick={this.openOverlay}>Open Overlay</button>
-          </div>
+        </div>
       </div>
     );
   }

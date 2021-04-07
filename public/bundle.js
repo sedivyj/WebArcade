@@ -20449,6 +20449,10 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
     }
   });
 
+  // client/utility/loadGameScript.ts
+  var require_loadGameScript = __commonJS(() => {
+  });
+
   // client/index.jsx
   var import_react5 = __toModule(require_react());
   var import_react_dom = __toModule(require_react_dom());
@@ -20510,21 +20514,65 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
 
   // client/game/gameComponent.jsx
   var import_react2 = __toModule(require_react());
+
+  // client/utility/api-tools.js
+  async function getById(endpoint, id, cb_success, cb_error) {
+    const response = await fetch(`${endpoint}/${id}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    });
+    const result = await response.json();
+    if (response.ok) {
+      if (cb_success) {
+        cb_success(result);
+      }
+    } else {
+      if (cb_error) {
+        cb_error(result);
+      }
+    }
+  }
+
+  // client/game/gameComponent.jsx
+  var import_loadGameScript = __toModule(require_loadGameScript());
+  var loadGameScript = (filename, callback) => {
+    const existingScript = document.getElementById("gamescript");
+    if (!existingScript) {
+      const script = document.createElement("script");
+      script.src = "gamejs/" + filename + ".js";
+      script.type = "text/javascript";
+      script.id = "gamescript";
+      document.body.appendChild(script);
+      script.onload = () => {
+        if (callback)
+          callback();
+      };
+    }
+    if (existingScript && callback)
+      callback();
+  };
+  function apiCallback(gameinfo) {
+    loadGameScript(gameinfo[0].filename, () => {
+      this.setState({gameScriptReady: true});
+    });
+  }
   var GameComponent = class extends import_react2.Component {
     constructor(props) {
       super(props);
+      this.state = {gameScriptReady: false};
+    }
+    componentDidMount() {
+      getById("/game/getGame", this.props.gameid, apiCallback, () => console.log("ERROR getting game info"));
     }
     render() {
       return /* @__PURE__ */ import_react2.default.createElement("div", {
-        className: "game-component"
+        className: "game-component",
+        style: {textAlign: "center", alignContent: "center"}
       }, /* @__PURE__ */ import_react2.default.createElement("span", {
-        id: "game"
-      }), /* @__PURE__ */ import_react2.default.createElement("script", {
-        type: "text/javascript",
-        src: "gamejs/FrogGame.js"
-      }), /* @__PURE__ */ import_react2.default.createElement("script", {
-        type: "text/javascript",
-        src: "gamejs/phaser.min.js"
+        id: "game",
+        style: {display: "table", margin: "0 auto"}
       }));
     }
   };
@@ -20545,7 +20593,21 @@ For more info, visit https://reactjs.org/link/mock-scheduler`);
       }, /* @__PURE__ */ import_react3.default.createElement("button", {
         className: "closeButton mt-4",
         onClick: this.props.closeOverlay
-      }, "X"), /* @__PURE__ */ import_react3.default.createElement("h1", null, "Game Overlay Exists!"), /* @__PURE__ */ import_react3.default.createElement(gameComponent_default, null));
+      }, "X"), /* @__PURE__ */ import_react3.default.createElement("div", {
+        className: "grid-container"
+      }, /* @__PURE__ */ import_react3.default.createElement("div", {
+        className: "item1"
+      }, /* @__PURE__ */ import_react3.default.createElement("h1", null, "Game Overlay Exists!")), /* @__PURE__ */ import_react3.default.createElement("div", {
+        className: "item2"
+      }), /* @__PURE__ */ import_react3.default.createElement("div", {
+        className: "item3"
+      }, /* @__PURE__ */ import_react3.default.createElement(gameComponent_default, {
+        gameid: "2"
+      })), /* @__PURE__ */ import_react3.default.createElement("div", {
+        className: "item4"
+      }), /* @__PURE__ */ import_react3.default.createElement("div", {
+        className: "item5"
+      })));
     }
   };
   var gameOverlay_default = GameOverlay;
