@@ -4,6 +4,7 @@ script.onload = function () {
 }
 
 function bootStrap() {
+  console.log("showing");
   var nickCageMode = false;
   var globalGameState;
   var countdownTimer;

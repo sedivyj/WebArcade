@@ -1,6 +1,7 @@
 body{
     background-color: black;
     overflow-y: scroll;
+    padding-top: 65px;
 }
 
 #bannerHome{
@@ -81,10 +82,14 @@ a:link {
     color: white;
     background-color: transparent;
     text-decoration: none;
-  }
+}
   
-  a:visited {
+a:visited {
     color: white;
     background-color: transparent;
     text-decoration: none;
-  }
+}
+
+.fadable-navbar {
+    transition: 0.5s;
+}
