@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
-
+import Home from './home'
 import NavBar from './navbar.jsx'
 import GameOverlay from './components/GameOverlay'
 import AllGames from './components/AllGames'
 import About from './components/About'
+import Home from './home.jsx'
 // import { getById } from './utility/api-tools.js'
 
 // The Entire Application
@@ -88,6 +89,7 @@ function App () {
         <NavBar
           isPlaying={isPlaying}
         />
+        <Home />
         <GameOverlay
           isPlaying={isPlaying}
           closeOverlay={closeOverlay}
