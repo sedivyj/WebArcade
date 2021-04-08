@@ -1,28 +1,69 @@
-import React, { Component } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+
 import NavBar from './navbar.jsx'
-import GameOverlay from './game/gameOverlay.jsx'
+import GameOverlay from './components/GameOverlay'
+import AllGames from './components/AllGames'
+import About from './components/About'
 // import { getById } from './utility/api-tools.js'
 
 // The Entire Application
-export default class App extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      gameData: '',
-      isPlaying: false
+function App () {
+  const [isPlaying, setIsPlaying] = useState(false)
+  const [games, setGames] = useState([])
+  const [scores, setScores] = useState(new Array(10))
+  const [isBusy, setBusy] = useState(true)
+  // const [gameData] = useState([''])
+
+  useEffect(() => {
+    let isMounted = true
+    const getScores = async () => {
+      const scoresFromServer = await fetchScores(1)
+      if (isMounted) setScores(scoresFromServer)
+      // setBusy(false)
+      console.log(scoresFromServer)
+      // setScores(scoresFromServer)
     }
+    getScores()
+    return () => { isMounted = false }
+  }, [])
 
-    // Binding these functions to this component's context
-    this.openOverlay = this.openOverlay.bind(this);
-    this.closeOverlay = this.closeOverlay.bind(this);
+  useEffect(() => {
+    if (scores.length !== 0 && scores[0]) {
+      console.log(scores)
+      setBusy(false)
+      console.log('not busy anymore')
+      scores.map((score) => { console.log(score.score) })
+    }
+  }, scores)
+
+  const fetchScores = async (id) => {
+    const res = await fetch('http://localhost:8080/score/getGameHighScore/id/1/show/10')
+    const data = await res.json()
+    return data
   }
 
-  openOverlay() {
-    this.setState({ isPlaying: true })
+  const fetchGames = async () => {
+    const res = await fetch('http://localhost:8080/game/getGame')
+    const data = await res.json()
+
+    // console.log(data)
+    return data
   }
 
-  closeOverlay() {
-    this.setState({ isPlaying: false })
+  const fetchGame = async (id) => {
+    const res = await fetch(`http://localhost:8080/game/getGame/${id}`)
+    const data = await res.json()
+
+    return data
+  }
+
+  const openOverlay = () => {
+    setIsPlaying(true)
+  }
+
+  const closeOverlay = () => {
+    setIsPlaying(false)
   }
 
   // componentDidMount() {
@@ -41,15 +82,17 @@ export default class App extends Component {
   //   alert('FAIL')
   // }
 
-  render() {
+  if (isBusy) { return <p> please wait </p> } else {
     return (
       <div className="App">
         <NavBar
-          isPlaying={this.state.isPlaying}
+          isPlaying={isPlaying}
         />
         <GameOverlay
-          isPlaying={this.state.isPlaying}
-          closeOverlay={this.closeOverlay}
+          isPlaying={isPlaying}
+          closeOverlay={closeOverlay}
+          gameid = {2}
+          scores = {scores}
         />
         <div className="text-center">
           <h1>Sorry!</h1>
@@ -58,9 +101,28 @@ export default class App extends Component {
             experience for you all. Thank you for your patience! :)
             <br />-Web Arcade Dev Team
           </p>
-          <button onClick={this.openOverlay}>Open Overlay</button>
+          <button onClick={openOverlay}>Open Overlay</button>
+          <Router>
+          <div className='container'>
+            <Route path='/' exact render={(props) => (
+              <>
+                {!isPlaying && games.length > 0
+                  ? <AllGames
+                      games ={games}
+                      // onClick={() => onClick()}
+                    />
+                  : 'No Games to Show'
+                }
+              </>
+            )} />
+            <Route path='/about' component={About} />
+          </div>
+          </Router>
+
         </div>
       </div>
-    );
+    )
   }
 }
+
+export default App
