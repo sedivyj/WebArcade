@@ -4,7 +4,16 @@
   "description": "",
   "main": "server.js",
   "devDependencies": {
-    "esbuild": "^0.11.2"
+    "esbuild": "^0.11.2",
+    "eslint": "7.23.0",
+    "eslint-config-standard": "16.0.2",
+    "eslint-plugin-import": "2.22.1",
+    "eslint-plugin-node": "11.1.0",
+    "eslint-plugin-promise": "4.3.1",
+    "eslint-plugin-react": "7.23.1",
+    "@testing-library/jest-dom": "5.11.9",
+    "@testing-library/react": "11.2.5",
+    "@testing-library/user-event": "12.8.3"
   },
   "dependencies": {
     "babel-cli": "^6.26.0",
@@ -16,7 +25,8 @@
     "nodemailer": "^6.5.0",
     "nodemon": "^2.0.7",
     "react": "^17.0.1",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "react-router-dom": "5.2.0"
   },
   "scripts": {
     "start": "nodemon server/server.js",
@@ -26,6 +36,12 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sedivyj/WebArcade.git"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
   },
   "keywords": [],
   "author": "",
