@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import GameComponent from './gameComponent'
 
+/**
+ * This is the page where you can play the game and see your score on the side.
+ */
 export default class GameOverlay extends Component {
   constructor(props) {
     super(props)
