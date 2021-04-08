@@ -23,7 +23,7 @@ const loadGameScript = (filename, callback) => {
 function apiCallback (gameinfo) {
   loadGameScript(gameinfo[0].filename, () => {
     try {
-    this.setState({ gameScriptReady: true })
+      this.setState({ gameScriptReady: true })
     } catch (err) {
       console.log(err)
     }

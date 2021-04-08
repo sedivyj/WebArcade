@@ -9,7 +9,7 @@ import Scoreboard from './Scoreboard'
 const GameOverlay = ({ isPlaying, closeOverlay, gameid, scores }) => {
   // try to refactor in the old game page grid layout
   return (
-      <div className={"game-overlay"}
+      <div className={ "game-overlay" }
         style={{
           visibility: (isPlaying) ? 'visible' : 'hidden',
           opacity: (isPlaying) ? 100 : 0

@@ -6,7 +6,7 @@ export default class RatingComponent extends Component {
     super(props)
   }
 
-  positivePercentageColor() {
+  positivePercentageColor () {
     const percentage = this.props.positivePercentage
     let textColor = undefined
     if (percentage >= 70.0) {
@@ -20,7 +20,7 @@ export default class RatingComponent extends Component {
   }
 
 
-  render() {
+  render () {
     const percentageColor = this.positivePercentageColor()
     return(
       <div>
