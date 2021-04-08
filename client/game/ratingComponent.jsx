@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import RatingButton from './ratingButton.js'
+import RatingButton from './ratingButton.jsx'
 import { getById, postData } from '../utility/api-tools'
 
 export default class RatingComponent extends Component {
@@ -25,7 +25,7 @@ export default class RatingComponent extends Component {
     const percentageColor = this.positivePercentageColor()
     return(
       <div>
-        <RatingButton isPositve={ false }/>
+        <RatingButton isPositive={ false }/>
           <span style={{ color: percentageColor }}>{this.props.positivePercentage}%</span>
         <RatingButton isPositive={ true }/>
       </div>

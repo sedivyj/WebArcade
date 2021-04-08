@@ -12,13 +12,12 @@ export default class RatingButton extends Component {
 
   /**
    * Function to call when a vote happens
-   * @param {boolean} isPositve whether or not the player liked the game
+   * @param {boolean} isPositive whether or not the player liked the game
    */
   vote(isPositve) {
-    console.log(isPositve)
     const ratingData = {
       gameId: 1,
-      positive: isPositve
+      positive: isPositive
     }
     postData('/game/rateGame', ratingData, this.voteSuccess, this.voteFail)
   }
@@ -37,7 +36,7 @@ export default class RatingButton extends Component {
     return (
       <button 
         id={cssId}
-        onClick={() => this.vote(this.props.isPositve)}>
+        onClick={() => this.vote(this.props.isPositive)}>
         {label}
       </button>
     );
