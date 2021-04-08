@@ -6,15 +6,15 @@ import { postData } from '../utility/api-tools.js'
  * @param {boolean} isPositive does the button do a positive or negative rating
  */
 export default class RatingButton extends Component {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super (props)
   }
 
   /**
    * Function to call when a vote happens
    * @param {boolean} isPositive whether or not the player liked the game
    */
-  vote(isPositive) {
+  vote (isPositive) {
     const ratingData = {
       gameId: 1,
       positive: isPositive
@@ -22,15 +22,15 @@ export default class RatingButton extends Component {
     postData('/game/rateGame', ratingData, this.voteSuccess, this.voteFail)
   }
 
-  voteSuccess() {
+  voteSuccess () {
     alert('SUCCESS')
   }
 
-  voteFail() {
+  voteFail () {
     alert('FAIL')
   }
 
-  render() {
+  render () {
     const cssId = (this.props.isPositive) ? 'vote-up' : 'vote-down'
     const label = (this.props.isPositive) ? 'Loved!' : 'Hated!'
     return (

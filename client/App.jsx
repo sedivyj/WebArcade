@@ -38,13 +38,13 @@ function App () {
   }, scores)
 
   const fetchScores = async (id) => {
-    const res = await fetch('http://localhost:8080/score/getGameHighScore/id/1/show/10')
+    const res = await fetch('/score/getGameHighScore/id/1/show/10')
     const data = await res.json()
     return data
   }
 
   const fetchGames = async () => {
-    const res = await fetch('http://localhost:8080/game/getGame')
+    const res = await fetch('/game/getGame')
     const data = await res.json()
 
     // console.log(data)
@@ -52,7 +52,7 @@ function App () {
   }
 
   const fetchGame = async (id) => {
-    const res = await fetch(`http://localhost:8080/game/getGame/${id}`)
+    const res = await fetch(`/game/getGame/${id}`)
     const data = await res.json()
 
     return data
