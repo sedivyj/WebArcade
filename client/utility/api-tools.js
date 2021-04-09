@@ -6,24 +6,24 @@
  * @param {function} cb_success callback function to call with a good response
  * @param {function} cb_error callback function to call with bad response
  */
- export async function getFromAPI(endpoint, cb_success, cb_error) {
+export async function getFromAPI(endpoint, cb_success, cb_error) {
   // Make the fetch and await the response
   const response = await fetch(endpoint, {
-      method: 'GET',
-      headers: {
-          'Content-Type': 'application/json'
-      }
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json'
+    }
   });
   // Get JSON from response
   const result = await response.json()
   // Check if status of response was good
   if (response.ok) {
-      // Run Callback with retrieved data
-      if(cb_success) { cb_success(result) }
+    // Run Callback with retrieved data
+    if (cb_success) { cb_success(result) }
   }
   else {
-      // If a bad response -> check if error callback is defined and run it
-      if(cb_error) { cb_error(result) }
+    // If a bad response -> check if error callback is defined and run it
+    if (cb_error) { cb_error(result) }
   }
 }
 
@@ -37,21 +37,51 @@
 export async function getById(endpoint, id, cb_success, cb_error) {
   // Make the fetch and await the response
   const response = await fetch(`${endpoint}/${id}`, {
-      method: 'GET',
-      headers: {
-          'Content-Type': 'application/json'
-      }
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json'
+    }
   });
   // Get JSON from response
   const result = await response.json()
   // Check if status of response was good
   if (response.ok) {
-      // Run Callback with retrieved data
-      if(cb_success) { cb_success(result) } 
+    // Run Callback with retrieved data
+    if (cb_success) { cb_success(result) }
   }
   else {
-      // If a bad response -> check if error callback is defined and run it
-      if (cb_error) { cb_error(result) }
+    // If a bad response -> check if error callback is defined and run it
+    if (cb_error) { cb_error(result) }
+  }
+}
+
+/**
+* Asynchronous function that fetches data (GET) by id from server endpoint 
+* and limits how many data entries are returned
+* @param {string} endpoint API endpoint to call GET request
+* @param {number} id id of value to get from endpoint
+* @param {number} limit maximum number of data entries to return
+* @param {function} cb_success callback function to call with a good response
+* @param {function} cb_error callback function to call with bad response
+*/
+export async function getByIdLimit(endpoint, id, limit, cb_success, cb_error) {
+  // Make the fetch and await the response
+  const response = await fetch(`${endpoint}/id/${id}/show/${limit}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  });
+  // Get JSON from response
+  const result = await response.json()
+  // Check if status of response was good
+  if (response.ok) {
+    // Run Callback with retrieved data
+    if (cb_success) { cb_success(result) }
+  }
+  else {
+    // If a bad response -> check if error callback is defined and run it
+    if (cb_error) { cb_error(result) }
   }
 }
 
@@ -66,21 +96,21 @@ export async function getById(endpoint, id, cb_success, cb_error) {
 export async function postData(endpoint, data, cb_success, cb_error) {
   // Make the fetch and await the response
   const response = await fetch(endpoint, {
-      method: 'POST',
-      headers: {
-          'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data)
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
   })
   // Get JSON from response
-  const result = await response.json() 
+  const result = await response.json()
   // Check if status of response was good
   if (response.ok) {
-      // Run Callback with retrieved data
-      if(cb_success) { cb_success(result) }
-  } 
+    // Run Callback with retrieved data
+    if (cb_success) { cb_success(result) }
+  }
   else {
-      // If a bad response -> check if error callback is defined and run it
-      if(cb_error) { cb_error(result) }
+    // If a bad response -> check if error callback is defined and run it
+    if (cb_error) { cb_error(result) }
   }
 }

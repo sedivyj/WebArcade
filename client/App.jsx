@@ -11,60 +11,63 @@ import Home from './components/Home'
 // The Entire Application
 function App() {
   const [isPlaying, setIsPlaying] = useState(false)
-  const [gameid, setGameid] = useState(-1)
-  const [scores, setScores] = useState(new Array(10))
-  const [isBusy, setBusy] = useState(true)
+  const [gameid, setGameid] = useState(0)
+  //const [scores, setScores] = useState(new Array(10))
+  //const [isBusy, setBusy] = useState(true)
   // const [gameData] = useState([''])
 
-  useEffect(() => {
-    let isMounted = true
-    const getScores = async () => {
-      const scoresFromServer = await fetchScores(1)
-      if (isMounted) setScores(scoresFromServer)
-      // setBusy(false)
-      console.log(scoresFromServer)
-      // setScores(scoresFromServer)
-    }
-    getScores()
-    return () => { isMounted = false }
-  }, [])
+  // useEffect(() => {
+  //   let isMounted = true
+  //   const getScores = async () => {
+  //     const scoresFromServer = await fetchScores(gameid < 1 && gameid > 3 ? 1 : gameid)
+  //     if (isMounted) setScores(scoresFromServer)
+  //     // setBusy(false)
+  //     console.log(scoresFromServer)
+  //     // setScores(scoresFromServer)
+  //   }
+  //   getScores()
+  //   return () => { isMounted = false }
 
-  useEffect(() => {
-    if (scores.length !== 0 && scores[0]) {
-      console.log(scores)
-      setBusy(false)
-      console.log('not busy anymore')
-      scores.map((score) => { console.log(score.score) })
-    }
-  }, scores)
+  // }, [])
 
-  const fetchScores = async (id) => {
-    const res = await fetch('/score/getGameHighScore/id/1/show/10')
-    const data = await res.json()
-    return data
-  }
+  // useEffect(() => {
+  //   if (scores.length !== 0 && scores[0]) {
+  //     console.log(scores)
+  //     setBusy(false)
+  //     console.log('not busy anymore')
+  //     scores.map((score) => { console.log(score.score) })
+  //   }
+  // }, scores)
 
-  const fetchGames = async () => {
-    const res = await fetch('/game/getGame')
-    const data = await res.json()
+  // const fetchScores = async (id) => {
+  //   const res = await fetch(`/score/getGameHighScore/id/${id}/show/10`)
+  //   const data = await res.json()
+  //   return data
+  // }
 
-    // console.log(data)
-    return data
-  }
+  // const fetchGames = async () => {
+  //   const res = await fetch('/game/getGame')
+  //   const data = await res.json()
 
-  const fetchGame = async (id) => {
-    const res = await fetch(`/game/getGame/${id}`)
-    const data = await res.json()
+  //   // console.log(data)
+  //   return data
+  // }
 
-    return data
-  }
+  // const fetchGame = async (id) => {
+  //   const res = await fetch(`/game/getGame/${id}`)
+  //   const data = await res.json()
+
+  //   return data
+  // }
 
   const openOverlay = () => {
     setIsPlaying(true)
   }
 
   const closeOverlay = () => {
+    setGameid(0)
     setIsPlaying(false)
+    location.reload()
   }
 
   // componentDidMount() {
@@ -83,21 +86,35 @@ function App() {
   //   alert('FAIL')
   // }
 
-  if (isBusy) { return <p> please wait </p> } else {
+  setGame = (gameid) => {
+    console.log("set game " + gameid)
+    setGameid(gameid)
+    //setScores(fetchScores(gameid))
+    setIsPlaying(true)
+  }
+
+  if (/*isBusy*/ false) { return <p> please wait </p> } else {
     return (
       <div className="App">
         <NavBar
           isPlaying={isPlaying}
         />
         <br />
-        <Home setGame={setGameid} openOverlay = {openOverlay}/>
+        <Home setGame={setGame} />
         <GameOverlay
           isPlaying={isPlaying}
           closeOverlay={closeOverlay}
           gameid={gameid}
-          scores={scores}
+        // scores={scores}
         />
-          {/* <button onClick={openOverlay}>Open Overlay</button> */}
+        {/* <div className="text-center">
+          <h1>Sorry!</h1>
+          <p style={{ color: 'white' }}>
+            This website is currently under construction. We are working hard to create a better
+            experience for you all. Thank you for your patience! :)
+            <br />-Web Arcade Dev Team
+          </p>
+          <button onClick={openOverlay}>Open Overlay</button>
           <Router>
             <div className='container'>
               <Route path='/' exact render={(props) => (

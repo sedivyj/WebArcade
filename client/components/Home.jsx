@@ -32,7 +32,7 @@ export default class Home extends Component {
         <div className='row'>
           {
             this.state.gameinfo.map((game, index) => (
-              <GameTile openOverlay={this.props.openOverlay} setGameid={this.props.setGameid} key={index} gameid={game.gameid} title={game.title} filename={game.filename} />
+              <GameTile setGame={this.props.setGame} key={index} gameid={game.gameid} title={game.title} filename={game.filename} />
             ))
           }
         </div>
