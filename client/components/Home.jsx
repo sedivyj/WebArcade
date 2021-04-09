@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { getFromAPI } from '../utility/api-tools'
+import GameTile from './GameTile'
 
 export default class Home extends Component {
   constructor(props) {
