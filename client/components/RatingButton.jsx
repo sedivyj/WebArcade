@@ -35,6 +35,7 @@ export default class RatingButton extends Component {
     const label = (this.props.isPositive) ? 'Loved!' : 'Hated!'
     return (
       <button
+        className='btn'
         id={cssId}
         onClick={() => this.vote(this.props.isPositive)}>
         {label}
