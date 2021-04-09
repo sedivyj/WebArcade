@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import GameComponent from './GameComponent'
 import RatingComponent from './RatingComponent'
 import Scoreboard from './Scoreboard'
@@ -8,6 +8,9 @@ import Scoreboard from './Scoreboard'
 
 const GameOverlay = ({ isPlaying, closeOverlay, gameid, scores }) => {
   // try to refactor in the old game page grid layout
+
+  //need set state function
+  console.log("game overlay " + gameid)
   return (
     <div className={"game-overlay"}
       style={{
@@ -18,7 +21,7 @@ const GameOverlay = ({ isPlaying, closeOverlay, gameid, scores }) => {
       <button className="closeButton mt-4" onClick={closeOverlay}>X</button>
       <div className="grid-container">
         <div className="item1"><h1>Game Overlay Exists!</h1></div>
-        <div className="item2"></div>
+        <div className="item2"><Scoreboard scores={scores} /></div>
         <div className="item3"><GameComponent gameid={gameid} /></div>
         <div className="item4">
           <RatingComponent
@@ -27,8 +30,6 @@ const GameOverlay = ({ isPlaying, closeOverlay, gameid, scores }) => {
         </div>
         <div className="item5"></div>
       </div>
-      <Scoreboard scores={scores} />
-
     </div>
 
   )

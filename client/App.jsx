@@ -11,7 +11,7 @@ import Home from './components/Home'
 // The Entire Application
 function App() {
   const [isPlaying, setIsPlaying] = useState(false)
-  const [games, setGames] = useState([])
+  const [gameid, setGameid] = useState(0)
   const [scores, setScores] = useState(new Array(10))
   const [isBusy, setBusy] = useState(true)
   // const [gameData] = useState([''])
@@ -64,7 +64,9 @@ function App() {
   }
 
   const closeOverlay = () => {
+    setGameid(0)
     setIsPlaying(false)
+    location.reload()
   }
 
   // componentDidMount() {
@@ -83,6 +85,12 @@ function App() {
   //   alert('FAIL')
   // }
 
+  setGame = (gameid) => {
+    console.log("set game " + gameid)
+    setGameid(gameid)
+    setIsPlaying(true)
+  }
+
   if (isBusy) { return <p> please wait </p> } else {
     return (
       <div className="App">
@@ -90,13 +98,13 @@ function App() {
           isPlaying={isPlaying}
         />
         <br />
-        <Home />
-        {/* <GameOverlay
+        <Home setGame={setGame} />
+        <GameOverlay
           isPlaying={isPlaying}
           closeOverlay={closeOverlay}
-          gameid={2}
+          gameid={gameid}
           scores={scores}
-        /> */}
+        />
         {/* <div className="text-center">
           <h1>Sorry!</h1>
           <p style={{ color: 'white' }}>

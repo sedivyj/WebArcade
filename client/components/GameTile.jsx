@@ -3,11 +3,10 @@ import React, { Component } from 'react'
 export default class GameTile extends Component {
   constructor(props) {
     super(props)
-    this.openGame.bind(this)
   }
 
-  openGame() {
-    console.log(this.props.gameid)
+  setGame = () => {
+    this.props.setGame(this.props.gameid)
   }
 
   render() {
@@ -15,7 +14,7 @@ export default class GameTile extends Component {
     const altText = 'Play ' + this.props.title + '!'
     return (
       <div className='col-sm-6 col-md-4 col-lg-3 text-center'>
-        <img src={url} className="gameThumbNail" onClick={() => this.openGame()} />
+        <img onClick={this.setGame} src={url} className="gameThumbNail" />
         <div>
           <span className='txt'>{altText}</span>
         </div>
