@@ -1,16 +1,19 @@
-import React, { Component } from 'react'
+import React, { Component, useEffect } from 'react'
 
 export default class GameTile extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.openGame.bind(this)
   }
 
-  openGame() {
+  openGame () {
     console.log(this.props.gameid)
+    this.props.setGameid(this.props.gameid)
+    this.setState({ gameid: this.props.gameid })
+    this.props.openOverlay()
   }
 
-  render() {
+  render () {
     const url = 'https://cs458capstone.azurewebsites.net/images/thumbnail/' + this.props.filename + 'Thumbnail.jpg'
     const altText = 'Play ' + this.props.title + '!'
     return (

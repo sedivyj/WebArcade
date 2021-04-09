@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { getFromAPI } from '../utility/api-tools'
+import GameTile from './GameTile'
 
 export default class Home extends Component {
   constructor(props) {
@@ -31,7 +32,7 @@ export default class Home extends Component {
         <div className='row'>
           {
             this.state.gameinfo.map((game, index) => (
-              <GameTile key={index} gameid={game.gameid} title={game.title} filename={game.filename} />
+              <GameTile openOverlay={this.props.openOverlay} setGameid={this.props.setGameid} key={index} gameid={game.gameid} title={game.title} filename={game.filename} />
             ))
           }
         </div>

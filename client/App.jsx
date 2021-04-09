@@ -11,7 +11,7 @@ import Home from './components/Home'
 // The Entire Application
 function App() {
   const [isPlaying, setIsPlaying] = useState(false)
-  const [games, setGames] = useState([])
+  const [gameid, setGameid] = useState(-1)
   const [scores, setScores] = useState(new Array(10))
   const [isBusy, setBusy] = useState(true)
   // const [gameData] = useState([''])
@@ -90,21 +90,14 @@ function App() {
           isPlaying={isPlaying}
         />
         <br />
-        <Home />
-        {/* <GameOverlay
+        <Home setGame={setGameid} openOverlay = {openOverlay}/>
+        <GameOverlay
           isPlaying={isPlaying}
           closeOverlay={closeOverlay}
-          gameid={2}
+          gameid={gameid}
           scores={scores}
-        /> */}
-        {/* <div className="text-center">
-          <h1>Sorry!</h1>
-          <p style={{ color: 'white' }}>
-            This website is currently under construction. We are working hard to create a better
-            experience for you all. Thank you for your patience! :)
-            <br />-Web Arcade Dev Team
-          </p>
-          <button onClick={openOverlay}>Open Overlay</button>
+        />
+          {/* <button onClick={openOverlay}>Open Overlay</button> */}
           <Router>
             <div className='container'>
               <Route path='/' exact render={(props) => (
@@ -122,8 +115,7 @@ function App() {
             </div>
           </Router>
 
-        </div> */}
-      </div>
+        </div>
     )
   }
 }

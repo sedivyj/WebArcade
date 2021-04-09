@@ -37,7 +37,9 @@ export default class GameComponent extends Component {
   }
 
   componentDidMount() {
-    getById('/game/getGame', this.props.gameid, apiCallback, () => console.log('ERROR getting game info'))
+    if (this.props.gameid) {
+      getById('/game/getGame', this.props.gameid, apiCallback, () => console.log('ERROR getting game info'))
+    }
   }
 
   render() {
