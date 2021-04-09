@@ -34,7 +34,7 @@ router.use('/getGame/:id?', async (req, res) => {
       return res.json(game)
     } catch (err) {
       return res.status(500).json({
-        error: true, message: 'Could not get top score'
+        error: true, message: 'Could not get all games'
       })
     }
   }
