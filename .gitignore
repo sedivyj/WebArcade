@@ -14,7 +14,10 @@ app/**/*.js.map
 # dependencies
 node_modules/
 bower_components/
-
+webpack.config.js
+package-lock.json
+public/bundle.js
+public/bundle.js.map
 # IDEs and editors
 .idea/
 

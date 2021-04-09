@@ -5,10 +5,11 @@ import NavBar from './navbar.jsx'
 import GameOverlay from './components/GameOverlay'
 import AllGames from './components/AllGames'
 import About from './components/About'
+import Home from './components/Home'
 // import { getById } from './utility/api-tools.js'
 
 // The Entire Application
-function App () {
+function App() {
   const [isPlaying, setIsPlaying] = useState(false)
   const [games, setGames] = useState([])
   const [scores, setScores] = useState(new Array(10))
@@ -88,13 +89,15 @@ function App () {
         <NavBar
           isPlaying={isPlaying}
         />
-        <GameOverlay
+        <br />
+        <Home />
+        {/* <GameOverlay
           isPlaying={isPlaying}
           closeOverlay={closeOverlay}
-          gameid = {2}
-          scores = {scores}
-        />
-        <div className="text-center">
+          gameid={2}
+          scores={scores}
+        /> */}
+        {/* <div className="text-center">
           <h1>Sorry!</h1>
           <p style={{ color: 'white' }}>
             This website is currently under construction. We are working hard to create a better
@@ -103,23 +106,23 @@ function App () {
           </p>
           <button onClick={openOverlay}>Open Overlay</button>
           <Router>
-          <div className='container'>
-            <Route path='/' exact render={(props) => (
-              <>
-                {!isPlaying && games.length > 0
-                  ? <AllGames
-                      games ={games}
-                      // onClick={() => onClick()}
+            <div className='container'>
+              <Route path='/' exact render={(props) => (
+                <>
+                  {!isPlaying && games.length > 0
+                    ? <AllGames
+                      games={games}
+                    // onClick={() => onClick()}
                     />
-                  : 'No Games to Show'
-                }
-              </>
-            )} />
-            <Route path='/about' component={About} />
-          </div>
+                    : 'No Games to Show'
+                  }
+                </>
+              )} />
+              <Route path='/about' component={About} />
+            </div>
           </Router>
 
-        </div>
+        </div> */}
       </div>
     )
   }

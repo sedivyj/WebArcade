@@ -80,5 +80,12 @@
 .gameThumbNail{
     width:200px; 
     height:200px;
+}
 
+.gameThumbNail:hover {
+  cursor: pointer;
+}
+
+.txt {
+  color: #9f9f9f
 }
