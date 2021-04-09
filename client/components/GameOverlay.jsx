@@ -9,12 +9,12 @@ import Scoreboard from './Scoreboard'
 const GameOverlay = ({ isPlaying, closeOverlay, gameid, scores }) => {
   // try to refactor in the old game page grid layout
   return (
-      <div className={ "game-overlay" }
-        style={{
-          visibility: (isPlaying) ? 'visible' : 'hidden',
-          opacity: (isPlaying) ? 100 : 0
-        }}
-      >
+    <div className={"game-overlay"}
+      style={{
+        visibility: (isPlaying) ? 'visible' : 'hidden',
+        opacity: (isPlaying) ? 100 : 0
+      }}
+    >
       <button className="closeButton mt-4" onClick={closeOverlay}>X</button>
       <div className="grid-container">
         <div className="item1"><h1>Game Overlay Exists!</h1></div>
@@ -22,14 +22,14 @@ const GameOverlay = ({ isPlaying, closeOverlay, gameid, scores }) => {
         <div className="item3"><GameComponent gameid={gameid} /></div>
         <div className="item4">
           <RatingComponent
-            positivePercentage={ 80 }
+            positivePercentage={80}
           />
         </div>
         <div className="item5"></div>
       </div>
-      <Scoreboard scores={scores}/>
+      <Scoreboard scores={scores} />
 
-      </div>
+    </div>
 
   )
 }

@@ -20,7 +20,7 @@ const loadGameScript = (filename, callback) => {
   if (existingScript && callback) callback()
 }
 
-function apiCallback (gameinfo) {
+function apiCallback(gameinfo) {
   loadGameScript(gameinfo[0].filename, () => {
     try {
       this.setState({ gameScriptReady: true })
@@ -31,17 +31,17 @@ function apiCallback (gameinfo) {
 }
 
 export default class GameComponent extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = { gameScriptReady: false }
     // const [gameScriptReady, setgameScriptReady] = useState(false)
   }
 
-  componentDidMount () {
+  componentDidMount() {
     getById('/game/getGame', this.props.gameid, apiCallback, () => console.log('ERROR getting game info'))
   }
 
-  render () {
+  render() {
     return (
       <div className="game-component"
         style={{ textAlign: 'center', alignContent: 'center' }}>
