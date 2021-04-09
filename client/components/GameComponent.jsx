@@ -54,15 +54,15 @@ export default class GameComponent extends Component {
     console.log("game component constructor " + this.props.gameid)
     // const [gameScriptReady, setgameScriptReady] = useState(false)
   }
-
-  changeGame(gameid) {
-    this.setState(gameid, (gameid) => {
-      return {
-        gameScriptReady: false,
-        gameid: gameid
-      }
-    })
-  }
+  // Depricated?
+  // changeGame(gameid) {
+  //   this.setState(gameid, (gameid) => {
+  //     return {
+  //       gameScriptReady: false,
+  //       gameid: gameid
+  //     }
+  //   })
+  // }
 
   componentDidMount() {
     // console.log("game component mount " + this.props.gameid)
@@ -71,7 +71,7 @@ export default class GameComponent extends Component {
     // }
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate() {
     //if gameid is different unload old script and load new script
     console.log("game component update " + this.props.gameid)
     if (this.props.gameid > 0) {

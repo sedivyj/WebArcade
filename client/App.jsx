@@ -12,52 +12,53 @@ import Home from './components/Home'
 function App() {
   const [isPlaying, setIsPlaying] = useState(false)
   const [gameid, setGameid] = useState(0)
-  const [scores, setScores] = useState(new Array(10))
-  const [isBusy, setBusy] = useState(true)
+  //const [scores, setScores] = useState(new Array(10))
+  //const [isBusy, setBusy] = useState(true)
   // const [gameData] = useState([''])
 
-  useEffect(() => {
-    let isMounted = true
-    const getScores = async () => {
-      const scoresFromServer = await fetchScores(1)
-      if (isMounted) setScores(scoresFromServer)
-      // setBusy(false)
-      console.log(scoresFromServer)
-      // setScores(scoresFromServer)
-    }
-    getScores()
-    return () => { isMounted = false }
-  }, [])
+  // useEffect(() => {
+  //   let isMounted = true
+  //   const getScores = async () => {
+  //     const scoresFromServer = await fetchScores(gameid < 1 && gameid > 3 ? 1 : gameid)
+  //     if (isMounted) setScores(scoresFromServer)
+  //     // setBusy(false)
+  //     console.log(scoresFromServer)
+  //     // setScores(scoresFromServer)
+  //   }
+  //   getScores()
+  //   return () => { isMounted = false }
 
-  useEffect(() => {
-    if (scores.length !== 0 && scores[0]) {
-      console.log(scores)
-      setBusy(false)
-      console.log('not busy anymore')
-      scores.map((score) => { console.log(score.score) })
-    }
-  }, scores)
+  // }, [])
 
-  const fetchScores = async (id) => {
-    const res = await fetch('/score/getGameHighScore/id/1/show/10')
-    const data = await res.json()
-    return data
-  }
+  // useEffect(() => {
+  //   if (scores.length !== 0 && scores[0]) {
+  //     console.log(scores)
+  //     setBusy(false)
+  //     console.log('not busy anymore')
+  //     scores.map((score) => { console.log(score.score) })
+  //   }
+  // }, scores)
 
-  const fetchGames = async () => {
-    const res = await fetch('/game/getGame')
-    const data = await res.json()
+  // const fetchScores = async (id) => {
+  //   const res = await fetch(`/score/getGameHighScore/id/${id}/show/10`)
+  //   const data = await res.json()
+  //   return data
+  // }
 
-    // console.log(data)
-    return data
-  }
+  // const fetchGames = async () => {
+  //   const res = await fetch('/game/getGame')
+  //   const data = await res.json()
 
-  const fetchGame = async (id) => {
-    const res = await fetch(`/game/getGame/${id}`)
-    const data = await res.json()
+  //   // console.log(data)
+  //   return data
+  // }
 
-    return data
-  }
+  // const fetchGame = async (id) => {
+  //   const res = await fetch(`/game/getGame/${id}`)
+  //   const data = await res.json()
+
+  //   return data
+  // }
 
   const openOverlay = () => {
     setIsPlaying(true)
@@ -88,10 +89,11 @@ function App() {
   setGame = (gameid) => {
     console.log("set game " + gameid)
     setGameid(gameid)
+    //setScores(fetchScores(gameid))
     setIsPlaying(true)
   }
 
-  if (isBusy) { return <p> please wait </p> } else {
+  if (/*isBusy*/ false) { return <p> please wait </p> } else {
     return (
       <div className="App">
         <NavBar
@@ -103,7 +105,7 @@ function App() {
           isPlaying={isPlaying}
           closeOverlay={closeOverlay}
           gameid={gameid}
-          scores={scores}
+        // scores={scores}
         />
         {/* <div className="text-center">
           <h1>Sorry!</h1>
