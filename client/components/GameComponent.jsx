@@ -1,6 +1,5 @@
 import React, { Component, useState, useEffect } from 'react'
 import { getById } from '../utility/api-tools'
-import useScript from '../utility/loadGameScript'
 
 const loadGameScript = (filename, callback) => {
   const existingScript = document.getElementById('gamescript')
