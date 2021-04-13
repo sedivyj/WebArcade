@@ -1,6 +1,7 @@
 import React, { Component, useState, useEffect } from 'react'
 import { getById } from '../utility/api-tools'
 
+// This function loads the game script dynamically to the webpage
 const loadGameScript = (filename, callback) => {
   console.log("Load game script")
   const existingScript = document.getElementById('gamescript')
@@ -11,10 +12,6 @@ const loadGameScript = (filename, callback) => {
     script.type = 'text/javascript'
     script.id = 'gamescript'
     console.log(script)
-    //const phaser = document.createElement('script')
-    // phaser.src = 'gamejs/phaser.min.js'
-    // phaser.type = 'text/javascript'
-    // phaser.id = 'phaser'
     document.body.appendChild(script)
 
     script.onload = () => {
@@ -52,35 +49,19 @@ export default class GameComponent extends Component {
       gameScriptReady: false,
     }
     console.log("game component constructor " + this.props.gameid)
-    // const [gameScriptReady, setgameScriptReady] = useState(false)
   }
-  // Depricated?
-  // changeGame(gameid) {
-  //   this.setState(gameid, (gameid) => {
-  //     return {
-  //       gameScriptReady: false,
-  //       gameid: gameid
-  //     }
-  //   })
-  // }
 
   componentDidMount() {
-    // console.log("game component mount " + this.props.gameid)
-    // if (this.props.gameid > 0) {
-    //   getById('/game/getGame', this.props.gameid, apiCallback, () => console.log('ERROR getting game info'))
-    // }
   }
 
   componentDidUpdate() {
-    //if gameid is different unload old script and load new script
+    // If gameid is greater than zero make a call to the database to load the game script, otherwise unload it
     console.log("game component update " + this.props.gameid)
     if (this.props.gameid > 0) {
       getById('/game/getGame', this.props.gameid, apiCallback, () => console.log('ERROR getting game info'))
     } else {
       unloadGameScript()
     }
-
-    //if new gameid is undefined unload old script
   }
 
   componentWillUnmount() {
