@@ -107,31 +107,6 @@ function App() {
           gameid={gameid}
         // scores={scores}
         />
-        {/* <div className="text-center">
-          <h1>Sorry!</h1>
-          <p style={{ color: 'white' }}>
-            This website is currently under construction. We are working hard to create a better
-            experience for you all. Thank you for your patience! :)
-            <br />-Web Arcade Dev Team
-          </p>
-          <button onClick={openOverlay}>Open Overlay</button>
-          <Router>
-            <div className='container'>
-              <Route path='/' exact render={(props) => (
-                <>
-                  {!isPlaying && games.length > 0
-                    ? <AllGames
-                      games={games}
-                    // onClick={() => onClick()}
-                    />
-                    : 'No Games to Show'
-                  }
-                </>
-              )} />
-              <Route path='/about' component={About} />
-            </div>
-          </Router>
-
         </div>
     )
   }
