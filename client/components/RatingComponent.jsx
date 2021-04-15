@@ -14,7 +14,9 @@ const RatingComponent = ({ gameid, isPlaying }) => {
   }, [isPlaying])
 
   const setPercentage = (response) => {
-    console.log(response.positivePercent)
+    if (response.wasPositive !== null) {
+      setWasPositive(response.wasPositive)
+    }
     setPositivePercentage(response.positivePercent)
   }
 
@@ -38,9 +40,17 @@ const RatingComponent = ({ gameid, isPlaying }) => {
 
   return (
     <div>
-      <RatingButton isPositive={false} />
+      <RatingButton
+        gameid={gameid}
+        isPositive={false}
+        wasPositive={wasPositive}
+      />
       <span className='ml-2 mr-2' style={{ color: positivePercentageColor() }}>{ratingValue()}</span>
-      <RatingButton isPositive={true} />
+      <RatingButton
+        gameid={gameid}
+        isPositive={true}
+        wasPositive={wasPositive}
+      />
     </div>
   )
 }
