@@ -24,6 +24,7 @@ export default class RatingButton extends Component {
     postData('/game/rateGame', ratingData, this.voteSuccess, this.voteFail)
   }
 
+  // Callback for API call for posting the rating
   voteSuccess = () => {
     this.props.setPercentagePostRate()
     // this.styleButtons()
@@ -34,7 +35,8 @@ export default class RatingButton extends Component {
     alert('FAIL')
   }
 
-  styleButtons (forcedUpdate) {
+  // Styles the buttons based on previous ratings and type of button
+  styleButtons () {
     // Check if it was rated
     if (this.props.wasPositive !== null) {
       // Previous rating positive

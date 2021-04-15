@@ -10,14 +10,15 @@ const RatingComponent = ({ gameid, isPlaying }) => {
   useEffect(() => {
     if (gameid !== 0) {
       getPercentage()
-      // getById('/game/getOverallRating', gameid, setPercentage)
     }
   }, [isPlaying])
 
+  // Makes API call to get the rating
   const getPercentage = () => {
     getById('/game/getOverallRating', gameid, setPercentage)
   }
 
+  // Callback to set the percentage from API call
   const setPercentage = (response) => {
     if (response.wasPositive !== null) {
       setWasPositive(response.wasPositive)
@@ -25,6 +26,7 @@ const RatingComponent = ({ gameid, isPlaying }) => {
     setPositivePercentage(response.positivePercent)
   }
 
+  // Determines text color based on the percentage
   const positivePercentageColor = () => {
     if (positivePercentage >= 70.0) {
       return 'green'
@@ -35,6 +37,7 @@ const RatingComponent = ({ gameid, isPlaying }) => {
     }
   }
 
+  // Formats the percentage display
   const ratingValue = () => {
     if (positivePercentage) {
       return `  ${positivePercentage.toFixed(1)}%  `
