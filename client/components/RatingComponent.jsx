@@ -6,9 +6,9 @@ export default class RatingComponent extends Component {
     super(props)
   }
 
-  positivePercentageColor() {
+  positivePercentageColor () {
     const percentage = this.props.positivePercentage
-    let textColor = undefined
+    let textColor
     if (percentage >= 70.0) {
       textColor = 'green'
     } else if (percentage >= 50.0) {
@@ -19,13 +19,22 @@ export default class RatingComponent extends Component {
     return textColor
   }
 
+  ratingValue () {
+    if (this.props.positivePercentage) {
+      return `  ${this.props.positivePercentage.toFixed(1)}%  `
+    } else {
+      return '  No Ratings!  '
+    }
+  }
 
-  render() {
+  render () {
     const percentageColor = this.positivePercentageColor()
+    const percentage = this.ratingValue()
+
     return (
       <div>
         <RatingButton isPositive={false} />
-        <span style={{ color: percentageColor }}>{this.props.positivePercentage}%</span>
+        <span className='ml-2 mr-2' style={{ color: percentageColor }}>{percentage}</span>
         <RatingButton isPositive={true} />
       </div>
     );

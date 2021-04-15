@@ -1,19 +1,31 @@
-import React, { Component } from 'react'
+import React, { useState, useEffect } from 'react'
 import GameComponent from './GameComponent'
 import RatingComponent from './RatingComponent'
 import Scoreboard from './Scoreboard'
 import Scoreboard_v2 from './Scoreboard_v2'
+
+import { getById } from '../utility/api-tools.js'
 /**
  * This is the page where you can play the game and see your score on the side.
  */
 
 const GameOverlay = ({ isPlaying, closeOverlay, gameid, scores }) => {
   // try to refactor in the old game page grid layout
+  const [positivePercentage, setPositivePercentage] = useState(0)
 
-  //need set state function
-  console.log("game overlay " + gameid)
+  useEffect(() => {
+    if(gameid !== 0) {
+      getById('/game/getOverallRating', gameid, setPercentage)
+    }
+  }, [isPlaying])
+
+  const setPercentage = (response) => {
+    console.log(response.positivePercent)
+    setPositivePercentage(response.positivePercent)
+  }
+
   return (
-    <div className={"game-overlay"}
+    <div className={'game-overlay'}
       style={{
         visibility: (isPlaying) ? 'visible' : 'hidden',
         opacity: (isPlaying) ? 100 : 0
@@ -26,7 +38,7 @@ const GameOverlay = ({ isPlaying, closeOverlay, gameid, scores }) => {
         <div className="item3"><GameComponent gameid={gameid} /></div>
         <div className="item4">
           <RatingComponent
-            positivePercentage={80}
+            positivePercentage={positivePercentage}
           />
         </div>
         <div className="item5"></div>
