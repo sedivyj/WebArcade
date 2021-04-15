@@ -19,13 +19,14 @@ export default class RatingButton extends Component {
   vote (isPositive) {
     const ratingData = {
       gameId: this.props.gameid,
-      positive: isPositive
+      positive: this.props.isPositive
     }
     postData('/game/rateGame', ratingData, this.voteSuccess, this.voteFail)
   }
 
   voteSuccess = () => {
-    this.styleButtons()
+    this.props.setPercentagePostRate()
+    // this.styleButtons()
     alert('SUCCESS')
   }
 

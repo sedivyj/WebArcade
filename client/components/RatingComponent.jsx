@@ -9,9 +9,14 @@ const RatingComponent = ({ gameid, isPlaying }) => {
 
   useEffect(() => {
     if (gameid !== 0) {
-      getById('/game/getOverallRating', gameid, setPercentage)
+      getPercentage()
+      // getById('/game/getOverallRating', gameid, setPercentage)
     }
   }, [isPlaying])
+
+  const getPercentage = () => {
+    getById('/game/getOverallRating', gameid, setPercentage)
+  }
 
   const setPercentage = (response) => {
     if (response.wasPositive !== null) {
@@ -44,12 +49,14 @@ const RatingComponent = ({ gameid, isPlaying }) => {
         gameid={gameid}
         isPositive={false}
         wasPositive={wasPositive}
+        setPercentagePostRate={getPercentage}
       />
       <span className='ml-2 mr-2' style={{ color: positivePercentageColor() }}>{ratingValue()}</span>
       <RatingButton
         gameid={gameid}
         isPositive={true}
         wasPositive={wasPositive}
+        setPercentagePostRate={getPercentage}
       />
     </div>
   )
