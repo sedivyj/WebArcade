@@ -65,4 +65,7 @@ const RatingComponent = ({ gameid, isPlaying }) => {
   )
 }
 
+// Set up the prop types
+// RatingComponent.propType
+
 export default RatingComponent
