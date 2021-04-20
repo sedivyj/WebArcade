@@ -14,11 +14,13 @@ var mainState = {
     game.stage.backgroundColor = '#1350d4';
     game.load.image('fish', 'images/SwimmyFish/fish.png');
     game.load.image('seaweed', 'images/SwimmyFish/seaweed.png');
+    game.load.image('powerup', 'images/SwimmyFish/fly.png');
   },
 
   create: function () {
     game.physics.startSystem(Phaser.Physics.ARCADE);
     this.seaweeds = game.add.group();
+    this.powerups = game.add.group();
     this.clock = game.time.events.loop(1500, this.addRowOfSeaweeds, this);
     this.fish = game.add.sprite(200, 50, 'fish');
     game.physics.arcade.enable(this.fish);
@@ -31,7 +33,10 @@ var mainState = {
     this.startLabel = game.add.text(200, 300, "Press [SPACE] to Start!", { font: "30px Arial", fill: "#ffffff" });
 
     this.score = 0;
+    this.scoreMultiplier = 1;
     this.labelScore = game.add.text(300, 75, "0", { font: "60px Arial", fill: "#ffffff" });
+
+    //this.smLabel = game.add.text(300, 275, "0", { font: "60px Arial", fill: "#ffffff" });
   },
 
   update: function () {
@@ -42,10 +47,13 @@ var mainState = {
         this.hitSeaweed();
 
       game.physics.arcade.overlap(this.fish, this.seaweeds, this.hitSeaweed, null, this);
+      game.physics.arcade.overlap(this.fish, this.powerups, this.hitScorePowerup, null, this);
 
       if (this.fish.alive) {
-        this.score += 1;
+        this.score = this.score + (1 * this.scoreMultiplier);
         this.labelScore.text = this.score;
+
+        //this.smLabel.text = this.scoreMultiplier;
       }
     }
   },
@@ -81,6 +89,16 @@ var mainState = {
     this.gameOver();
   },
 
+  hitScorePowerup: function () {
+    this.scoreMultiplier += 1;
+    
+    this.powerups.forEach(this.destroyFly, this);
+  },
+
+  destroyFly: function(powerup) {
+    powerup.destroy();
+  },
+
   restartGame: function () {
     game.state.start('main');
   },
@@ -95,13 +113,28 @@ var mainState = {
     seaweed.checkWorldBounds = true;
   },
 
+  addPowerup: function (x, y) {
+    var powerup = game.add.sprite(x, y, 'powerup');
+    this.powerups.add(powerup);
+    game.physics.arcade.enable(powerup);
+
+    powerup.body.velocity.x = -150 - (Math.random() * 100);
+    powerup.outOfBoundsKill = true;
+    powerup.checkWorldBounds = true;
+  },
+
   addRowOfSeaweeds: function () {
     if (!this.paused) {
       var hole = Math.floor(Math.random() * 5) + 1;
 
       for (var i = 0; i < 20; i++)
-        if (i < hole || i > hole + 5)
+        if (i < hole || i > hole + 5) {
           this.addOneSeaweed(700, i * 40);
+        }else if (i == hole + 4) {
+          if(10 > (Math.random() * 100)){
+            this.addPowerup(700, i * 40);
+          }
+        }
     }
   },
 
