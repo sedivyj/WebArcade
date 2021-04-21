@@ -3,15 +3,15 @@ import React from 'react'
 function HighScoreTile (props) {
   return (
     <div className='game'>
-      <h3>Title</h3>
+      <h3>{props.title}</h3>
       <i className='fab fa-twitter fa-4x'></i>
-      <img src={`images/thumbnail/froggerThumbnail.jpg`}
+      <img src={`images/thumbnail/${props.filename}Thumbnail.jpg`}
         style={{
           width: '150px',
           height: '150px'
         }}/>
-      <div className='counter' data-target='500'></div>
-      <h4>INITIALS</h4>
+      <div className='counter' data-target={`${props.maxScore}`}></div>
+      <h4>{props.initial}</h4>
     </div>
   )
 }

@@ -64,6 +64,7 @@ router.use('/submitScore', async (req, res) => {
 router.get('/getAllHighScores', async (req, res) => {
   try {
     const gameAndHighScores = await SQL_DB_SCORE.getAllHighScores()
+    console.log(gameAndHighScores)
     return res.status(200).json(gameAndHighScores)
   } catch (error) {
     const err = { error: 'There was an error getting scores' }

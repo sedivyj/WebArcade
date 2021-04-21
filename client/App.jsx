@@ -104,7 +104,6 @@ function App () {
         />
         <br />
         { isHighScore && <HighScore/> }
-
         { !isHighScore &&
           <>
             <Home setGame={setGame} />
