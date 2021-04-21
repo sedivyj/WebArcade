@@ -1,17 +1,31 @@
 import React, { Component } from 'react'
 
 export default class NavBar extends Component {
-  constructor(props) {
-      super(props);
-      // this.state = { liked: false };
+  constructor (props) {
+    super(props)
+    // this.state = { liked: false };
+    this.viewHome = this.viewHome.bind(this)
+    this.viewHighScore = this.viewHighScore.bind(this)
+  }
+
+  viewHome (event) {
+    event.preventDefault()
+
+    this.props.setIsHighScore(false)
+  }
+
+  viewHighScore (event) {
+    event.preventDefault()
+
+    this.props.setIsHighScore(true)
   }
 
   render() {
     return (
       <nav className="navbar navbar-inverse navbar-fixed-top fadable-navbar"
-      style={{ 
+      style={{
         visibility: (this.props.isPlaying) ? 'hidden': 'visible',
-        opacity:  (this.props.isPlaying) ? 0 : 100
+        opacity: (this.props.isPlaying) ? 0 : 100
       }}
       >
         <div className="container-fluid">
@@ -25,10 +39,10 @@ export default class NavBar extends Component {
             </div>
           <div className="collapse navbar-collapse" id="myNavbar">
             <ul className="nav navbar-nav">
-                <li><a href="index.html">Home</a></li>
+                <li><a onClick={this.viewHome}>Home</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="contact.html">Contact</a></li>
-                <li><a href="high_scores.html">High Scores</a></li>
+                <li><a onClick={this.viewHighScore}>High Scores</a></li>
             </ul>
           </div>
         </div>

@@ -60,4 +60,15 @@ router.use('/submitScore', async (req, res) => {
     res.status(500).json(err)
   }
 })
+
+router.get('/getAllHighScores', async (req, res) => {
+  try {
+    const gameAndHighScores = await SQL_DB_SCORE.getAllHighScores()
+    return res.status(200).json(gameAndHighScores)
+  } catch (error) {
+    const err = { error: 'There was an error getting scores' }
+    return res.status(500).json(err)
+  }
+})
+
 module.exports = router

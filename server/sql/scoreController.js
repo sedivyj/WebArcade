@@ -58,7 +58,7 @@ function getAllHighScores () {
   const db = getDb()
 
   return new Promise((resolve, reject) => {
-    const prepStmt = 'SELECT g.gameid, g.title, g.filename MAX(s.score), s.initial FROM score s JOIN game g on s.fk_gameid = g.gameid GROUP BY g.gameid'
+    const prepStmt = 'SELECT gameid, title, filename, MAX(s.score) as maxScore, initial FROM score s JOIN game g on s.fk_gameid = g.gameid GROUP BY g.gameid'
 
     db.query(prepStmt, (error, result) => {
       if (error) {

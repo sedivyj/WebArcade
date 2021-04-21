@@ -32,7 +32,7 @@
   },
   "scripts": {
     "start": "nodemon server/server.js",
-    "devBundle": "esbuild client/index.jsx --bundle --sourcemap --define:process.env.NODE_ENV=\\\"dev\\\" --outfile=public/bundle.js",
+    "devBundle": "esbuild client/index.jsx --bundle --sourcemap --define:process.env.NODE_ENV=\\\"development\\\" --outfile=public/bundle.js",
     "bundle": "esbuild client/index.jsx --bundle --minify --define:process.env.NODE_ENV=\\\"production\\\" --outfile=public/bundle.js"
   },
   "repository": {
