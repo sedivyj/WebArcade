@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 export default class NavBar extends Component {
   constructor (props) {
@@ -20,11 +21,11 @@ export default class NavBar extends Component {
     this.props.setIsHighScore(true)
   }
 
-  render() {
+  render () {
     return (
       <nav className="navbar navbar-inverse navbar-fixed-top fadable-navbar"
       style={{
-        visibility: (this.props.isPlaying) ? 'hidden': 'visible',
+        visibility: (this.props.isPlaying) ? 'hidden' : 'visible',
         opacity: (this.props.isPlaying) ? 0 : 100
       }}
       >
@@ -47,10 +48,11 @@ export default class NavBar extends Component {
           </div>
         </div>
       </nav>
-    );
+    )
   }
 }
 
-
-
-
+NavBar.propTypes = {
+  isPlaying: PropTypes.bool,
+  setIsHighScore: PropTypes.func
+}
