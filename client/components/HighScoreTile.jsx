@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 function HighScoreTile (props) {
   return (
@@ -11,6 +12,13 @@ function HighScoreTile (props) {
       <h4>{props.initial}</h4>
     </div>
   )
+}
+
+HighScoreTile.propTypes = {
+  title: PropTypes.string,
+  filename: PropTypes.string,
+  maxScore: PropTypes.number,
+  initial: PropTypes.string
 }
 
 export default HighScoreTile
