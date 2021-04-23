@@ -54,7 +54,7 @@ router.use('/getOverallRating/:gameId', async (req, res) => {
 
       // Checking Cookies
       const cookie = req.cookies[`game_${gameid}_rated`] // get cookie
-      const wasPositiveRating = (cookie) ? cookie.wasPositive : undefined
+      const wasPositiveRating = (cookie) ? cookie.wasPositive : null
 
       const response = {
         positivePercent: percent, // should only have 1 or none response

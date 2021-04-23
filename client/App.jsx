@@ -9,7 +9,7 @@ import Home from './components/Home'
 // import { getById } from './utility/api-tools.js'
 
 // The Entire Application
-function App() {
+function App () {
   const [isPlaying, setIsPlaying] = useState(false)
   const [gameid, setGameid] = useState(0)
   //const [scores, setScores] = useState(new Array(10))
@@ -86,7 +86,7 @@ function App() {
   //   alert('FAIL')
   // }
 
-  setGame = (gameid) => {
+  const setGame = (gameid) => {
     console.log("set game " + gameid)
     setGameid(gameid)
     //setScores(fetchScores(gameid))
