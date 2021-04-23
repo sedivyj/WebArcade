@@ -28,6 +28,11 @@ function HighScore (props) {
     </div>
     <div className='container'>
       <div className='row test'>
+      {gameMaxScores.length === 0 &&
+        <div className='col text-center'>
+          <h2>Loading... Please wait.</h2>
+        </div>
+      }
       {gameMaxScores.map((gameScore) => {
         return (
           <HighScoreTile

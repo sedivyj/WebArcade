@@ -72,22 +72,6 @@ function App () {
     location.reload()
   }
 
-  // componentDidMount() {
-  //   // Example of use the api-utility in react
-  //   getById('test/testdbAPI', 1, this.success, this.fail)
-  // }
-
-  // // Using Arrow syntax caches the 'this' of the component
-  // success = (data) => {
-  //   console.log('OPE')
-  //   console.log(data)
-  //   this.setState({ gameData: data })
-  // }
-
-  // fail = (error) => {
-  //   alert('FAIL')
-  // }
-
   const setGame = (gameid) => {
     console.log("set game " + gameid)
     setGameid(gameid)
