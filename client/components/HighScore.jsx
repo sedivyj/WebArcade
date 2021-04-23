@@ -6,9 +6,9 @@ import { getFromAPI } from '../utility/api-tools.js'
 function HighScore (props) {
   const [gameMaxScores, setGameMaxScores] = useState([])
 
-  useEffect(async () => {
+  useEffect(() => {
     if (gameMaxScores.length === 0) {
-      await getFromAPI('/score/getAllHighScores', setGameScoresSuccess, setGameScoresFail)
+      getFromAPI('/score/getAllHighScores', setGameScoresSuccess, setGameScoresFail)
     }
   }, [])
 
@@ -22,10 +22,12 @@ function HighScore (props) {
   }
 
   return (
-    <div className='hspage'>
-      <div className='hsbanner'>
-        <img src='images/banner/High-Score-4k_trimmed.gif'/>
-      </div>
+    <>
+    <div className='hsbanner'>
+      <img id='score' src='images/banner/High-Score-4k_trimmed.gif'/>
+    </div>
+    <div className='container'>
+      <div className='row test'>
       {gameMaxScores.map((gameScore) => {
         return (
           <HighScoreTile
@@ -37,7 +39,9 @@ function HighScore (props) {
           />
         )
       })}
+      </div>
     </div>
+    </>
   )
 }
 
