@@ -20,7 +20,9 @@ const GameOverlay = ({ isPlaying, closeOverlay, gameid, scores }) => {
     >
       <button className="closeButton mt-4" onClick={closeOverlay}>X</button>
       <div className="grid-container">
-        <div className="item1"><h1>Game Overlay Exists!</h1></div>
+        <div className="item1">
+          {/* <h1>Game Overlay Exists!</h1> */}
+        </div>
         <div className="item2"><Scoreboard_v2 gameid={gameid} /></div>
         <div className="item3"><GameComponent gameid={gameid} /></div>
         <div className="item4">
