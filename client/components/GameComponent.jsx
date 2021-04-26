@@ -22,6 +22,24 @@ const loadGameScript = (filename, callback) => {
   if (existingScript && callback) callback()
 }
 
+const loadHtmlGame = (game, callback) => {
+  console.log(`TODO: load html game from /${game.filename}`);
+
+  const gameSpan = document.getElementById('game');
+  const iFrame = document.createElement('iframe');
+  iFrame.title = game.title;
+  iFrame.src = `/${game.filename}`;
+  iFrame.type = 'text/html';
+  iFrame.id = 'gameFrame';
+  iFrame.width=800;
+  iFrame.height=600;
+  gameSpan.appendChild(iFrame);
+  iFrame.onload = () => {
+    if (callback) callback();
+  };
+};
+
+
 const unloadGameScript = () => {
   const existingScript = document.getElementById('gamescript')
 
@@ -31,16 +49,29 @@ const unloadGameScript = () => {
 }
 
 function apiCallback(gameinfo) {
-  console.log("api callback", gameinfo);
-  loadGameScript(gameinfo[0].filename, () => {
-    try {
-      if (this.setState) {
-        this.setState({ gameScriptReady: true })
-      }
-    } catch (err) {
-      console.log(err)
-    }
-  })
+  const game = gameinfo[0];
+  console.log("api callback", game);
+
+  switch (game.gametype) {
+    case 'html':
+      loadHtmlGame(game, () => {
+        if (this.setState) {
+          this.setState({ gameHtmlReady: true })
+        }
+      });
+      break;
+    case 'phaser2':
+    default:
+      loadGameScript(game.filename, () => {
+        try {
+          if (this.setState) {
+            this.setState({ gameScriptReady: true })
+          }
+        } catch (err) {
+          console.error(err)
+        }
+      })
+  }
 }
 
 export default class GameComponent extends Component {
@@ -49,6 +80,7 @@ export default class GameComponent extends Component {
 
     this.state = {
       gameScriptReady: false,
+      gameHtmlReady: false
     }
     console.log("game component constructor " + this.props.gameid)
   }
@@ -60,7 +92,7 @@ export default class GameComponent extends Component {
     // If gameid is greater than zero make a call to the database to load the game script, otherwise unload it
     console.log("game component update " + this.props.gameid)
     if (this.props.gameid > 0) {
-        getById('/game/getGame', this.props.gameid, apiCallback, () => console.log('ERROR getting game info'))
+      getById('/game/getGame', this.props.gameid, apiCallback, () => console.log('ERROR getting game info'))
     } else {
       unloadGameScript()
     }
