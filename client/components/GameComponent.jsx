@@ -3,7 +3,7 @@ import { getById } from '../utility/api-tools'
 
 // This function loads the game script dynamically to the webpage
 const loadGameScript = (filename, callback) => {
-  console.log("Load game script")
+  console.log("Load game script", filename)
   const existingScript = document.getElementById('gamescript')
 
   if (!existingScript) {
@@ -31,10 +31,12 @@ const unloadGameScript = () => {
 }
 
 function apiCallback(gameinfo) {
-  console.log("api call")
+  console.log("api callback", gameinfo);
   loadGameScript(gameinfo[0].filename, () => {
     try {
-      this.setState({ gameScriptReady: true })
+      if (this.setState) {
+        this.setState({ gameScriptReady: true })
+      }
     } catch (err) {
       console.log(err)
     }
@@ -54,11 +56,12 @@ export default class GameComponent extends Component {
   componentDidMount() {
   }
 
-  componentDidUpdate() {
-    // If gameid is greater than zero make a call to the database to load the game script, otherwise unload it
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.data === this.state.data) return;
+      // If gameid is greater than zero make a call to the database to load the game script, otherwise unload it
     console.log("game component update " + this.props.gameid)
     if (this.props.gameid > 0) {
-      getById('/game/getGame', this.props.gameid, apiCallback, () => console.log('ERROR getting game info'))
+        getById('/game/getGame', this.props.gameid, apiCallback, () => console.log('ERROR getting game info'))
     } else {
       unloadGameScript()
     }

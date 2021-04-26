@@ -33,9 +33,11 @@ export default class Scoreboard_v2 extends Component {
     )
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps, prevState) {
     if (this.props.gameid > 0) {
-      this.updateScores()
+      if (prevState.data !== this.state.data) {
+        this.updateScores();
+      }
     }
     else {
       this.setState({

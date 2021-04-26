@@ -706,3 +706,4 @@ MigrationBackup/
 
 # End of https://www.toptal.com/developers/gitignore/api/git,node,rider,angular,webstorm,visualstudio,visualstudiocode,react,vue,vuejs
 
+*.session.sql
