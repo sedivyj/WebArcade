@@ -1,17 +1,32 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 export default class NavBar extends Component {
-  constructor(props) {
-      super(props);
-      // this.state = { liked: false };
+  constructor (props) {
+    super(props)
+    // this.state = { liked: false };
+    this.viewHome = this.viewHome.bind(this)
+    this.viewHighScore = this.viewHighScore.bind(this)
   }
 
-  render() {
+  viewHome (event) {
+    event.preventDefault()
+
+    this.props.setIsHighScore(false)
+  }
+
+  viewHighScore (event) {
+    event.preventDefault()
+
+    this.props.setIsHighScore(true)
+  }
+
+  render () {
     return (
       <nav className="navbar navbar-inverse navbar-fixed-top fadable-navbar"
-      style={{ 
-        visibility: (this.props.isPlaying) ? 'hidden': 'visible',
-        opacity:  (this.props.isPlaying) ? 0 : 100
+      style={{
+        visibility: (this.props.isPlaying) ? 'hidden' : 'visible',
+        opacity: (this.props.isPlaying) ? 0 : 100
       }}
       >
         <div className="container-fluid">
@@ -21,22 +36,23 @@ export default class NavBar extends Component {
                   <span className="icon-bar"></span>
                   <span className="icon-bar"></span>
                 </button>
-              <a className="navbar-brand" href="index.html"><i>Capstone Web Arcade</i></a>
+              <a className="navbar-brand" onClick={this.viewHome}><i>Capstone Web Arcade</i></a>
             </div>
           <div className="collapse navbar-collapse" id="myNavbar">
             <ul className="nav navbar-nav">
-                <li><a href="index.html">Home</a></li>
+                <li><a onClick={this.viewHome}>Home</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="contact.html">Contact</a></li>
-                <li><a href="high_scores.html">High Scores</a></li>
+                <li><a onClick={this.viewHighScore}>High Scores</a></li>
             </ul>
           </div>
         </div>
       </nav>
-    );
+    )
   }
 }
 
-
-
-
+NavBar.propTypes = {
+  isPlaying: PropTypes.bool,
+  setIsHighScore: PropTypes.func
+}

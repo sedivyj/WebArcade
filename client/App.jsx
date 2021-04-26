@@ -6,12 +6,14 @@ import GameOverlay from './components/GameOverlay'
 import AllGames from './components/AllGames'
 import About from './components/About'
 import Home from './components/Home'
+import HighScore from './components/HighScore'
 // import { getById } from './utility/api-tools.js'
 
 // The Entire Application
 function App () {
   const [isPlaying, setIsPlaying] = useState(false)
   const [gameid, setGameid] = useState(0)
+  const [isHighScore, setIsHighScore] = useState(false)
   //const [scores, setScores] = useState(new Array(10))
   //const [isBusy, setBusy] = useState(true)
   // const [gameData] = useState([''])
@@ -70,22 +72,6 @@ function App () {
     location.reload()
   }
 
-  // componentDidMount() {
-  //   // Example of use the api-utility in react
-  //   getById('test/testdbAPI', 1, this.success, this.fail)
-  // }
-
-  // // Using Arrow syntax caches the 'this' of the component
-  // success = (data) => {
-  //   console.log('OPE')
-  //   console.log(data)
-  //   this.setState({ gameData: data })
-  // }
-
-  // fail = (error) => {
-  //   alert('FAIL')
-  // }
-
   const setGame = (gameid) => {
     console.log("set game " + gameid)
     setGameid(gameid)
@@ -98,15 +84,20 @@ function App () {
       <div className="App">
         <NavBar
           isPlaying={isPlaying}
+          setIsHighScore={setIsHighScore}
         />
         <br />
-        <Home setGame={setGame} />
-        <GameOverlay
-          isPlaying={isPlaying}
-          closeOverlay={closeOverlay}
-          gameid={gameid}
-        // scores={scores}
-        />
+        { isHighScore && <HighScore/> }
+        { !isHighScore &&
+          <>
+            <Home setGame={setGame} />
+            <GameOverlay
+              isPlaying={isPlaying}
+              closeOverlay={closeOverlay}
+              gameid={gameid}
+            />
+          </>
+        }
         </div>
     )
   }

@@ -9,10 +9,6 @@
 
 
 .test{
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  text-align: center;
-
   color: rgb(10, 233, 77);
   padding: 40px 20px;
   border-top: 3px lightskyblue solid;

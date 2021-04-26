@@ -54,7 +54,26 @@ function submitScore (gameid, score, initial) {
   })
 }
 
+function getAllHighScores () {
+  const db = getDb()
+
+  return new Promise((resolve, reject) => {
+    const prepStmt = 'SELECT gameid, title, filename, MAX(s.score) as maxScore, initial FROM score s JOIN game g on s.fk_gameid = g.gameid GROUP BY g.gameid'
+
+    db.query(prepStmt, (error, result) => {
+      if (error) {
+        console.log('Breaking in getAllHighScores in scoreController')
+        console.log(error)
+        return reject(error)
+      } else {
+        return resolve(result)
+      }
+    })
+  })
+}
+
 module.exports = {
   getGameHighScore,
-  submitScore
+  submitScore,
+  getAllHighScores
 }
