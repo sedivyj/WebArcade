@@ -57,8 +57,7 @@ export default class GameComponent extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (prevState.data === this.state.data) return;
-      // If gameid is greater than zero make a call to the database to load the game script, otherwise unload it
+    // If gameid is greater than zero make a call to the database to load the game script, otherwise unload it
     console.log("game component update " + this.props.gameid)
     if (this.props.gameid > 0) {
         getById('/game/getGame', this.props.gameid, apiCallback, () => console.log('ERROR getting game info'))
