@@ -28,7 +28,10 @@ export default class Home extends Component {
 
   render() {
     return (
+      <div className = 'Home'>
+    <img id='banner' src='images/banner/frogger_banner_two.jpg'/>
       <div className='container'>
+        
         <div className='row'>
           {
             this.state.gameinfo.map((game, index) => (
@@ -36,6 +39,7 @@ export default class Home extends Component {
             ))
           }
         </div>
+      </div>
       </div>
     )
   }
