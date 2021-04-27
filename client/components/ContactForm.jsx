@@ -1,64 +1,52 @@
-import React, { Component } from "react";
-import axios from "axios";
+import React, { useState } from 'react'
 
-class ContactForm extends Component {
-  constructor() {
-    super();
-    this.state = {
-      name: "",
-      email: "",
-      message: "",
-      status: "Submit"
-    };   
-  } 
-  // render() {}
-  render() {
-    let buttonText = this.state.status;
-    return (      
-        <form onSubmit={this.handleSubmit.bind(this)} method="POST">
-            <div>
-            <label htmlFor="name">Name:</label>
-            <input
-                type="text"
-                id="name"
-                value={this.state.name}
-                onChange={this.handleChange.bind(this)}
-                required
-            />
-            </div>
-            <div>
-            <label htmlFor="email">Email:</label>
-            <input
-                type="email"
-                id="email"
-                value={this.state.email}
-                onChange={this.handleChange.bind(this)}
-                required
-            />
-            </div>
-            <div>
-            <label htmlFor="message">Message:</label>
-            <textarea
-                id="message"
-                value={this.state.message}
-                onChange={this.handleChange.bind(this)}
-                required
-            />
-            </div>
-            <button type="submit">{buttonText}</button>
-        </form>      
-    );
-}
-}
-handleChange(event) {
-    const field = event.target.id;
-    if (field === "name") {
-      this.setState({ name: event.target.value });
-    } else if (field === "email") {
-      this.setState({ email: event.target.value });
-    } else if (field === "message") {
-      this.setState({ message: event.target.value });
+const ContactForm = () => {
+  const [status, setStatus] = useState('Submit')
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    setStatus('Sending...')
+    const { name, email, message } = e.target.elements
+    const details = {
+      name: name.value,
+      email: email.value,
+      message: message.value
     }
-  };
+    const response = await fetch('/submitForm', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8'
+      },
+      body: JSON.stringify(details)
+    })
+    setStatus('Submit')
+    const result = await response.json()
+    alert(result.status)
+  }
+  return (
 
-export default ContactForm;
+    <form onSubmit={handleSubmit}>
+
+      <div className="form-container">
+      <div className="contact-form">
+      <div className="name">
+
+        <label htmlFor="name">Name:</label>
+        <input type="text" id="name" required />
+      </div>
+      <div className="email">
+        <label htmlFor="email"><br/>Email:</label>
+        <input type="email" id="email" required />
+      </div >
+      <div className ="message">
+        <label htmlFor="message"><br/>Message:</label>
+        <textarea id="message" required />
+      </div>
+      <button type="submit">{status}</button>
+      </div>
+      </div>
+    </form>
+
+  )
+}
+
+export default ContactForm

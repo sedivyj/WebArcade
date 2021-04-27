@@ -1,11 +1,15 @@
 
 import React, { Component } from 'react'
-
-function About (props) {
-  return (
-  <div className='hsbanner'>
-  <img id='score' src='images/banner/High-Score-4k_trimmed.gif'/>
-</div>
-  )
+import ContactForm from './ContactForm'
+class Contact extends Component {
+  render () {
+    return (
+      <div className='Contact'>
+      <img id='banner' src='images/banner/tetris_banner.png'/>
+      <h1>Please send us feedBack</h1>
+      <ContactForm/>
+      </div>
+    )
+  }
 }
-export default About
+export default Contact
