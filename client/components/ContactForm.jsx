@@ -11,7 +11,7 @@ const ContactForm = () => {
       email: email.value,
       message: message.value
     }
-    const response = await fetch('/submitForm', {
+    const response = await fetch('./contact/submitForm', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json;charset=utf-8'
