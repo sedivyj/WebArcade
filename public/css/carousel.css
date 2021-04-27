@@ -1,20 +1,4 @@
-* {box-sizing:border-box}
 
-
-.slideshow-container {
-
-  max-width: 100%;
-  max-height: 350px;
-  position: relative;
-  margin: auto;
-}
-
-
-.mySlides {
-  display:none;
-  margin-top:51px;
-
-}
 
 
 
