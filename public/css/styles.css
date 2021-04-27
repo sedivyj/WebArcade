@@ -9,6 +9,13 @@ body{
   position: relative;
   margin-top: 51px;
 }
+#banner{
+    width: 100%;
+    height: 350px;
+}
+.bannerAbout{
+    
+}
 
 #score{
     display: block;
@@ -22,16 +29,39 @@ body{
 
 #about-p {
     text-align:center;
-    margin-left: 33%;
-    margin-right: 33%;
+    margin-left: 20%;
+    margin-right: 20%;
     padding-top: 50px;
-    font-size: large;
+    font-size: xx-large;
     color:white;
 }
 
 h1{
     text-align: center;
     color:white
+}
+.form-container{
+    position: relative;
+    left: 20%;
+    width:60%;
+    height:600px;
+    background-color: #ffffff; 
+    border-radius: 25px;
+    margin-top: 75px;
+}
+.contact-form{position: absolute; top:10%; left:10%; width:80% ;height: 700px;}
+input,
+textarea {width:100%; margin-top: 2rem; border:none; border-bottom: 1px solid black; font-size: 24px;}
+.submit{border: 1px solid black; padding:1rem; text-align:center;background-color:#ffffff;cursor:pointer;}
+.submit:hover{opacity:0.6;}
+.email{
+    font-size: 24px;
+}
+.name{
+    font-size: 24px;
+}
+.message{
+    font-size: 24px;
 }
 
 .profiles{

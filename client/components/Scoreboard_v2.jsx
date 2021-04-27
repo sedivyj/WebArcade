@@ -10,7 +10,7 @@ export default class Scoreboard_v2 extends Component {
     }
   }
 
-  apiCallback = (scores) => {
+  apiCallback (scores) {
     try {
       this.setState({
         scores: scores
@@ -20,7 +20,7 @@ export default class Scoreboard_v2 extends Component {
     }
   }
 
-  updateScores = () => {
+  updateScores () {
     if (this.props.gameid > 0) {
       getByIdLimit('/score/getGameHighScore', this.props.gameid, 10, this.apiCallback, () => console.log('ERROR getting scores'))
     }
@@ -46,22 +46,22 @@ export default class Scoreboard_v2 extends Component {
     }
   }
 
-  componentWillUnmount() {
+  componentWillUnmount () {
     clearInterval(this.updateScoresInterval);
   }
 
-  createTableRows = () => {
-    var rows = []
-    for (var i = 0; i < this.state.scores.length; i++) {
+  createTableRows () {
+    const rows = []
+    for (let i = 0; i < this.state.scores.length; i++) {
       rows.push(<Score key={i} score={this.state.scores[i]} rank={i + 1} />)
     }
-    for (var i = this.state.scores.length; i < 10; i++) {
+    for (let i = this.state.scores.length; i < 10; i++) {
       rows.push(<Score key={i} score={{ initial: '---', score: 0 }} rank={i + 1} />)
     }
     return rows
   }
 
-  render() {
+  render () {
     return (
       <div id="leaderboardDiv">
         <table>
