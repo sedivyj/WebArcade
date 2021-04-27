@@ -3,18 +3,22 @@ import Score from './Score'
 import { getByIdLimit } from '../utility/api-tools'
 
 export default class Scoreboard_v2 extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.state = {
       scores: []
     }
+    this.apiCallback = this.apiCallback.bind(this)
   }
 
   apiCallback (scores) {
     try {
+
       this.setState({
         scores: scores
+        
       })
+      console.log(scores)
     } catch (err) {
       console.log(err)
     }
@@ -26,20 +30,19 @@ export default class Scoreboard_v2 extends Component {
     }
   }
 
-  componentDidMount() {
+  componentDidMount () {
     this.updateScoresInterval = setInterval(
       () => this.updateScores(),
       5000
     )
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate (prevProps, prevState) {
     if (this.props.gameid > 0) {
       if (prevState.data !== this.state.data) {
-        this.updateScores();
+        this.updateScores()
       }
-    }
-    else {
+    } else {
       this.setState({
         scores: []
       })
@@ -47,7 +50,7 @@ export default class Scoreboard_v2 extends Component {
   }
 
   componentWillUnmount () {
-    clearInterval(this.updateScoresInterval);
+    clearInterval(this.updateScoresInterval)
   }
 
   createTableRows () {
