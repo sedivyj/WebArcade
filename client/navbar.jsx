@@ -7,18 +7,31 @@ export default class NavBar extends Component {
     // this.state = { liked: false };
     this.viewHome = this.viewHome.bind(this)
     this.viewHighScore = this.viewHighScore.bind(this)
+    this.viewContact = this.viewContact.bind(this)
+    this.viewAbout = this.viewAbout.bind(this)
   }
 
   viewHome (event) {
     event.preventDefault()
 
-    this.props.setIsHighScore(false)
+    this.props.setActivePage('Home')
   }
 
   viewHighScore (event) {
     event.preventDefault()
+    this.props.setActivePage('HighScore')
+  }
 
-    this.props.setIsHighScore(true)
+  viewAbout (event) {
+    event.preventDefault()
+
+    this.props.setActivePage('About')
+  }
+
+  viewContact (event) {
+    event.preventDefault()
+
+    this.props.setActivePage('Contact')
   }
 
   render () {
@@ -41,8 +54,8 @@ export default class NavBar extends Component {
           <div className="collapse navbar-collapse" id="myNavbar">
             <ul className="nav navbar-nav">
                 <li><a onClick={this.viewHome}>Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a onClick={this.viewAbout}>About</a></li>
+                <li><a onClick={this.viewContact}>Contact</a></li>
                 <li><a onClick={this.viewHighScore}>High Scores</a></li>
             </ul>
           </div>
@@ -54,5 +67,8 @@ export default class NavBar extends Component {
 
 NavBar.propTypes = {
   isPlaying: PropTypes.bool,
-  setIsHighScore: PropTypes.func
+  setIsHighScore: PropTypes.func,
+  setAbout: PropTypes.func,
+  setContact: PropTypes.func,
+  setActivePage: PropTypes.func
 }

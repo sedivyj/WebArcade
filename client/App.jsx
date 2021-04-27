@@ -7,6 +7,7 @@ import AllGames from './components/AllGames'
 import About from './components/About'
 import Home from './components/Home'
 import HighScore from './components/HighScore'
+import Contact from './components/Contact'
 // import { getById } from './utility/api-tools.js'
 
 // The Entire Application
@@ -14,6 +15,10 @@ function App () {
   const [isPlaying, setIsPlaying] = useState(false)
   const [gameid, setGameid] = useState(0)
   const [isHighScore, setIsHighScore] = useState(false)
+  const [isAbout, setAbout] = useState(false)
+  const [isContact, setContact] = useState(false)
+
+  const [activePage, setActivePage] = useState('Home')
   //const [scores, setScores] = useState(new Array(10))
   //const [isBusy, setBusy] = useState(true)
   // const [gameData] = useState([''])
@@ -80,24 +85,28 @@ function App () {
   }
 
   if (/*isBusy*/ false) { return <p> please wait </p> } else {
+    let activeElement = (<>
+      <Home setGame={setGame} />
+      <GameOverlay
+        isPlaying={isPlaying}
+        closeOverlay={closeOverlay}
+        gameid={gameid}
+      />
+    </>)
+
+    switch (activePage) {
+      case 'HighScore': activeElement = <HighScore/>; break
+      case 'About': activeElement = <About/>; break
+      case 'Contact': activeElement = <Contact/>; break
+    }
     return (
       <div className="App">
         <NavBar
           isPlaying={isPlaying}
-          setIsHighScore={setIsHighScore}
+          setActivePage={setActivePage}
         />
         <br />
-        { isHighScore && <HighScore/> }
-        { !isHighScore &&
-          <>
-            <Home setGame={setGame} />
-            <GameOverlay
-              isPlaying={isPlaying}
-              closeOverlay={closeOverlay}
-              gameid={gameid}
-            />
-          </>
-        }
+        {activeElement}
         </div>
     )
   }
